@@ -71,14 +71,36 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .alt{background:var(--paper)}
 
 /* ---------- Itinerario ---------- */
-.days{display:grid;gap:0;border-top:1px solid var(--line)}
-.day{display:grid;grid-template-columns:130px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
-.day-n{font-family:var(--font-display);font-size:15px;letter-spacing:.08em;color:var(--atardecer);text-transform:uppercase;padding-top:4px}
-.day-n span{display:block;font-family:var(--font-body);font-size:12px;letter-spacing:.1em;color:var(--mute);font-weight:400;margin-top:4px}
-.day-b h3{margin-bottom:8px}
-.day-b p{margin:0;color:var(--ink-soft);font-size:15px}
-.tag{display:inline-block;background:var(--arena-soft);color:var(--tierra);border-radius:999px;padding:3px 11px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin:8px 6px 0 0}
-@media(max-width:640px){.day{grid-template-columns:1fr;gap:8px}}
+.itin{display:grid;grid-template-columns:1fr 340px;gap:30px;align-items:start}
+.itin-panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:38px 40px;min-height:330px}
+.day-p{animation:fadeUp .38s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.day-p{animation:none}}
+.day-chip{display:inline-block;background:var(--atardecer);color:#fff;font-family:var(--font-display);font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.day-p h3{margin-bottom:14px;font-size:clamp(24px,3.2vw,36px)}
+.day-p p{margin:0 0 4px;color:var(--ink-soft);font-size:15.5px;line-height:1.75}
+.tag{display:inline-block;background:var(--arena-soft);color:var(--tierra);border-radius:999px;padding:3px 11px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin:10px 6px 0 0}
+
+.itin-nav{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft)}
+.day-i{appearance:none;background:transparent;border:0;border-bottom:1px solid var(--line);border-left:4px solid transparent;text-align:left;padding:16px 20px;cursor:pointer;font-family:var(--font-body);transition:background .2s,border-color .2s;display:block;width:100%}
+.day-i:last-child{border-bottom:0}
+.day-i em{display:block;font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--atardecer);font-weight:500;margin-bottom:3px}
+.day-i b{display:block;font-weight:400;font-size:15px;color:var(--ink-soft);line-height:1.3}
+.day-i:hover{background:rgba(230,202,178,.28)}
+.day-i.is-on{background:var(--arena);border-left-color:var(--atardecer)}
+.day-i.is-on b{color:var(--tierra);font-weight:500}
+.day-i:focus-visible{outline:2px solid var(--atardecer);outline-offset:-2px}
+
+@media(max-width:900px){
+  .itin{display:flex;flex-direction:column-reverse;align-items:stretch;gap:18px}
+  .itin-panel,.itin-nav{min-width:0;max-width:100%}
+  .itin-nav{flex-direction:row;overflow-x:auto;border-radius:999px;scrollbar-width:none}
+  .itin-nav::-webkit-scrollbar{display:none}
+  .day-i{border-bottom:0;border-left:0;border-top:3px solid transparent;padding:12px 18px;white-space:nowrap;width:auto;flex:none}
+  .day-i.is-on{border-left-color:transparent;border-top-color:var(--atardecer)}
+  .day-i b{font-size:13.5px}
+  .itin-panel{padding:28px 24px}
+}
 
 /* ---------- Vuelos ---------- */
 .flights{display:grid;gap:18px}
@@ -183,15 +205,35 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .alert b{color:var(--atardecer-dark);font-weight:500}
 
 /* ---------- Condiciones ---------- */
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
-@media(max-width:800px){.cols{grid-template-columns:1fr}}
-.cols h3{margin-bottom:16px}
+.acc{display:flex;flex-direction:column;gap:14px}
+.ac{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-soft);overflow:hidden}
+.ac[open]{border-color:rgba(104,54,44,.28)}
+.ac summary{display:flex;align-items:center;gap:14px;padding:20px 24px;cursor:pointer;list-style:none;
+  font-family:var(--font-display);font-weight:400;text-transform:uppercase;letter-spacing:.02em;
+  font-size:clamp(17px,2.1vw,21px);color:var(--tierra);transition:background .2s}
+.ac summary::-webkit-details-marker{display:none}
+.ac summary:hover{background:rgba(230,202,178,.24)}
+.ac summary:focus-visible{outline:2px solid var(--atardecer);outline-offset:-2px}
+.ac-ic{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--font-display);font-size:15px;line-height:1;color:#fff}
+.ac-ic.yes{background:var(--oliva)}
+.ac-ic.no{background:var(--atardecer)}
+.ac-ic.warn{background:var(--tierra)}
+.ac-ic.info{background:var(--mute);font-style:italic}
+.ac-ar{margin-left:auto;flex:none;width:9px;height:9px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);
+  transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
+.ac[open] .ac-ar{transform:rotate(225deg) translate(-2px,-2px);border-color:var(--atardecer)}
+.ac-b{padding:0 24px 22px;animation:acIn .3s ease}
+@keyframes acIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ac-b{animation:none}.ac-ar{transition:none}}
 .lst{list-style:none;padding:0;margin:0;font-size:14.5px;color:var(--ink-soft)}
 .lst li{padding:9px 0 9px 28px;position:relative;border-bottom:1px solid var(--line)}
+.lst li:last-child{border-bottom:0}
 .lst li::before{position:absolute;left:0;top:9px;font-family:var(--font-display);font-size:15px}
 .lst.yes li::before{content:"+";color:var(--oliva)}
 .lst.no li::before{content:"–";color:var(--atardecer)}
-.fine{margin-top:36px;font-size:13px;color:var(--mute);line-height:1.75}
+.fine{font-size:13px;color:var(--mute);line-height:1.75}
+.fine p:last-child{margin-bottom:0}
 .fine strong{color:var(--tierra);font-weight:500}
 
 /* ---------- CTA + Footer ---------- */
@@ -213,11 +255,16 @@ footer p{margin:0 0 8px;line-height:1.7}
 .credits a{color:rgba(230,202,178,.5);text-decoration:underline}
 
 @media print{
-  .nav,.cta,.pick{display:none}
+  .nav,.cta,.pick,.itin-nav,.ac-ar{display:none}
   .hero{min-height:auto}
   body{background:#fff}
   section{padding:24px 0;break-inside:avoid}
-  .card,.exp-card,.flight{break-inside:avoid;box-shadow:none}
+  .card,.exp-card,.flight,.ac,.day-p{break-inside:avoid;box-shadow:none}
+  .itin{display:block}
+  .itin-panel{border:0;padding:0;box-shadow:none}
+  .day-p[hidden]{display:block!important}
+  .day-p{animation:none;margin-bottom:22px}
+  .ac-b{animation:none}
 }
 </style>
 </head>
@@ -262,55 +309,54 @@ footer p{margin:0 0 8px;line-height:1.7}
       <h2>El recorrido</h2>
       <p>Un plan que empieza con la Reforma al amanecer y termina con el olor a barro de Tlaquepaque. Cada día está pensado para que no corran, sino para que lleguen.</p>
     </div>
-    <div class="days">
-      <div class="day">
-        <div class="day-n">Día 1<span>Mié 21 oct</span></div>
-        <div class="day-b">
+    <div class="itin">
+      <div class="itin-panel">
+        <article class="day-p" data-day="1">
+          <span class="day-chip">Día 1 · Mié 21 oct</span>
           <h3>Bogotá → Ciudad de México</h3>
           <p>Vuelo directo con Aeroméxico. A la llegada los espera el traslado privado hasta el hotel, en pleno corredor de Paseo de la Reforma. El resto del día es suyo: la Alameda Central y el Palacio de Bellas Artes quedan a pasos.</p>
-          <span class="tag">Vuelo</span><span class="tag">Traslado privado</span><span class="tag">Check-in</span>
-        </div>
-      </div>
-      <div class="day">
-        <div class="day-n">Día 2<span>Jue 22 oct</span></div>
-        <div class="day-b">
+          <div><span class="tag">Vuelo</span><span class="tag">Traslado privado</span><span class="tag">Check-in</span></div>
+        </article>
+        <article class="day-p" data-day="2" hidden>
+          <span class="day-chip">Día 2 · Jue 22 oct</span>
           <h3>Globo sobre Teotihuacán</h3>
           <p>Recogida en el hotel de madrugada. Amanecen flotando sobre la Pirámide del Sol y la Calzada de los Muertos. Al bajar, desayuno, vino y café. En el regreso, la Basílica de Santa María de Guadalupe. Un día largo y de los que no se olvidan.</p>
-          <span class="tag">05:00 – 18:00</span><span class="tag">Guía bilingüe</span><span class="tag">Entradas incluidas</span>
-        </div>
-      </div>
-      <div class="day">
-        <div class="day-n">Día 3<span>Vie 23 oct</span></div>
-        <div class="day-b">
+          <div><span class="tag">05:00 – 18:00</span><span class="tag">Guía bilingüe</span><span class="tag">Entradas incluidas</span></div>
+        </article>
+        <article class="day-p" data-day="3" hidden>
+          <span class="day-chip">Día 3 · Vie 23 oct</span>
           <h3>La ciudad por dentro</h3>
           <p>City tour por la mañana: el Museo Nacional de Antropología —donde vive la Piedra del Sol— y el Templo Mayor, los cimientos mexicas debajo del Centro Histórico. Por la tarde, Coyoacán o Roma-Condesa, según el ánimo.</p>
-          <span class="tag">08:50 – 12:50</span><span class="tag">Guía bilingüe</span><span class="tag">Tarde libre</span>
-        </div>
-      </div>
-      <div class="day">
-        <div class="day-n">Día 4<span>Sáb 24 oct</span></div>
-        <div class="day-b">
+          <div><span class="tag">08:50 – 12:50</span><span class="tag">Guía bilingüe</span><span class="tag">Tarde libre</span></div>
+        </article>
+        <article class="day-p" data-day="4" hidden>
+          <span class="day-chip">Día 4 · Sáb 24 oct</span>
           <h3>Ciudad de México → Guadalajara</h3>
           <p>Traslado al aeropuerto y vuelo con Aeroméxico. Poco más de hora y media después, Jalisco. Traslado privado al hotel en el centro histórico tapatío y tarde libre para la Catedral, el Hospicio Cabañas y los murales de Orozco.</p>
-          <span class="tag">Vuelo interno</span><span class="tag">Traslado privado</span>
-        </div>
-      </div>
-      <div class="day">
-        <div class="day-n">Día 5<span>Dom 25 oct</span></div>
-        <div class="day-b">
+          <div><span class="tag">Vuelo interno</span><span class="tag">Traslado privado</span></div>
+        </article>
+        <article class="day-p" data-day="5" hidden>
+          <span class="day-chip">Día 5 · Dom 25 oct</span>
           <h3>Tlaquepaque</h3>
           <p>Caminata de dos horas por San Pedro Tlaquepaque: casonas de la avenida Independencia, galerías de arte, el Museo Regional de la Cerámica, sus dos iglesias y El Parián, la cantina más grande del mundo. Cierra con un taller de dulces tradicionales.</p>
-          <span class="tag">2 horas</span><span class="tag">Guía en español</span><span class="tag">Taller de dulces</span>
-        </div>
-      </div>
-      <div class="day">
-        <div class="day-n">Día 6<span>Lun 26 oct</span></div>
-        <div class="day-b">
+          <div><span class="tag">2 horas</span><span class="tag">Guía en español</span><span class="tag">Taller de dulces</span></div>
+        </article>
+        <article class="day-p" data-day="6" hidden>
+          <span class="day-chip">Día 6 · Lun 26 oct</span>
           <h3>Guadalajara → Bogotá</h3>
           <p>Según la opción de vuelo que elijan, la mañana queda libre o salen temprano. Traslado privado al aeropuerto y regreso a casa con Avianca.</p>
-          <span class="tag">Traslado privado</span><span class="tag">Vuelo de regreso</span>
-        </div>
+          <div><span class="tag">Traslado privado</span><span class="tag">Vuelo de regreso</span></div>
+        </article>
       </div>
+
+      <nav class="itin-nav" aria-label="Días del itinerario">
+        <button class="day-i is-on" data-day="1" type="button" aria-current="true"><em>Día 1</em><b>Llegada a CDMX</b></button>
+        <button class="day-i" data-day="2" type="button"><em>Día 2</em><b>Globo sobre Teotihuacán</b></button>
+        <button class="day-i" data-day="3" type="button"><em>Día 3</em><b>La ciudad por dentro</b></button>
+        <button class="day-i" data-day="4" type="button"><em>Día 4</em><b>Vuelo a Guadalajara</b></button>
+        <button class="day-i" data-day="5" type="button"><em>Día 5</em><b>Tlaquepaque</b></button>
+        <button class="day-i" data-day="6" type="button"><em>Día 6</em><b>Regreso a Bogotá</b></button>
+      </nav>
     </div>
   </div>
 </section>
@@ -649,55 +695,69 @@ footer p{margin:0 0 8px;line-height:1.7}
       <div class="eyebrow">Letra clara</div>
       <h2>Qué incluye<br>y qué no</h2>
     </div>
-    <div class="cols">
-      <div>
-        <h3>El plan incluye</h3>
-        <ul class="lst yes">
-          <li>Tiquete aéreo Bogotá – Ciudad de México, directo, con Aeroméxico</li>
-          <li>Tiquete aéreo Ciudad de México – Guadalajara, directo, con Aeroméxico</li>
-          <li>Tiquete aéreo Guadalajara – Bogotá con Avianca, en la opción elegida</li>
-          <li>3 noches de alojamiento en Ciudad de México, con desayuno</li>
-          <li>2 noches de alojamiento en Guadalajara, con desayuno</li>
-          <li>Traslado privado aeropuerto ⇄ hotel en Ciudad de México</li>
-          <li>Traslado privado aeropuerto ⇄ hotel en Guadalajara</li>
-          <li>Tour de globo aerostático, Teotihuacán y Basílica de Guadalupe</li>
-          <li>City Tour con Museo de Antropología y Templo Mayor</li>
-          <li>Tour a pie por San Pedro Tlaquepaque, con taller de dulces</li>
-          <li>Entradas a Teotihuacán, la Basílica, el Museo de Antropología y el Templo Mayor</li>
-          <li>Guía bilingüe español–inglés en los dos tours de Ciudad de México, y guía en español en Tlaquepaque</li>
-          <li>Acompañamiento de Raíces por WhatsApp, antes y durante el viaje</li>
-        </ul>
-      </div>
-      <div>
-        <h3>El plan no incluye</h3>
-        <ul class="lst no">
-          <li>Impuesto de 96 MXN por persona para ingresar a Teotihuacán, que se paga en el sitio</li>
-          <li>Entrada al interior del Palacio de Bellas Artes</li>
-          <li>Alimentación no especificada en el itinerario</li>
-          <li>Bebidas y consumos en hoteles y restaurantes</li>
-          <li>Propinas a guías, conductores y personal de hotel</li>
-          <li>Seguro de asistencia médica en viaje</li>
-          <li>Gastos personales y compras</li>
-          <li>Actividades opcionales no descritas</li>
-          <li>Impuestos de salida o tasas aeroportuarias no incluidas en el tiquete</li>
-          <li>Equipaje adicional al permitido por cada aerolínea</li>
-          <li>Cualquier servicio no mencionado explícitamente en «El plan incluye»</li>
-        </ul>
+    <div class="acc">
+      <details class="ac" open>
+        <summary><span class="ac-ic yes">+</span>El plan incluye<span class="ac-ar" aria-hidden="true"></span></summary>
+        <div class="ac-b">
+          <ul class="lst yes">
+            <li>Tiquete aéreo Bogotá – Ciudad de México, directo, con Aeroméxico</li>
+            <li>Tiquete aéreo Ciudad de México – Guadalajara, directo, con Aeroméxico</li>
+            <li>Tiquete aéreo Guadalajara – Bogotá con Avianca, en la opción elegida</li>
+            <li>3 noches de alojamiento en Ciudad de México, con desayuno</li>
+            <li>2 noches de alojamiento en Guadalajara, con desayuno</li>
+            <li>Traslado privado aeropuerto ⇄ hotel en Ciudad de México</li>
+            <li>Traslado privado aeropuerto ⇄ hotel en Guadalajara</li>
+            <li>Tour de globo aerostático, Teotihuacán y Basílica de Guadalupe</li>
+            <li>City Tour con Museo de Antropología y Templo Mayor</li>
+            <li>Tour a pie por San Pedro Tlaquepaque, con taller de dulces</li>
+            <li>Entradas a Teotihuacán, la Basílica, el Museo de Antropología y el Templo Mayor</li>
+            <li>Guía bilingüe español–inglés en los dos tours de Ciudad de México, y guía en español en Tlaquepaque</li>
+            <li>Acompañamiento de Raíces por WhatsApp, antes y durante el viaje</li>
+          </ul>
+        </div>
+      </details>
 
-        <h3 style="margin-top:36px">Políticas de cancelación</h3>
-        <ul class="lst no">
-          <li><b>Tiquetes aéreos:</b> no reembolsables una vez emitidos</li>
-          <li><b>Hoteles en Ciudad de México:</b> tarifa no reembolsable</li>
-          <li><b>Hoteles en Guadalajara:</b> cancelación gratuita hasta la fecha indicada en cada hotel</li>
-          <li><b>Tours y traslados:</b> sujetos a las condiciones del operador</li>
-        </ul>
-      </div>
-    </div>
+      <details class="ac">
+        <summary><span class="ac-ic no">–</span>El plan no incluye<span class="ac-ar" aria-hidden="true"></span></summary>
+        <div class="ac-b">
+          <ul class="lst no">
+            <li>Impuesto de 96 MXN por persona para ingresar a Teotihuacán, que se paga en el sitio</li>
+            <li>Entrada al interior del Palacio de Bellas Artes</li>
+            <li>Alimentación no especificada en el itinerario</li>
+            <li>Bebidas y consumos en hoteles y restaurantes</li>
+            <li>Propinas a guías, conductores y personal de hotel</li>
+            <li>Seguro de asistencia médica en viaje</li>
+            <li>Gastos personales y compras</li>
+            <li>Actividades opcionales no descritas</li>
+            <li>Impuestos de salida o tasas aeroportuarias no incluidas en el tiquete</li>
+            <li>Equipaje adicional al permitido por cada aerolínea</li>
+            <li>Cualquier servicio no mencionado explícitamente en «El plan incluye»</li>
+          </ul>
+        </div>
+      </details>
 
-    <div class="fine">
-      <p><strong>Vigencia:</strong> esta cotización se elaboró el 9 de julio de 2026 y las tarifas están sujetas a disponibilidad y a cambios sin previo aviso hasta el momento de la confirmación y el pago. Los valores en dólares corresponden a la conversión de los tiquetes aéreos a una tasa de $3.300 COP por dólar; una variación en la tasa de cambio puede modificar el valor final en pesos.</p>
-      <p><strong>Documentación:</strong> los ciudadanos colombianos requieren pasaporte con vigencia mínima de seis meses. Para el ingreso a México se debe tramitar la autorización electrónica correspondiente o presentar visa vigente según el caso. Es responsabilidad de cada viajero verificar y cumplir los requisitos migratorios y sanitarios del destino.</p>
-      <p><strong>Categorías hoteleras:</strong> corresponden a la clasificación local del destino. La asignación final de habitaciones depende de la disponibilidad del hotel al momento del check-in.</p>
+      <details class="ac">
+        <summary><span class="ac-ic warn">!</span>Políticas de cancelación<span class="ac-ar" aria-hidden="true"></span></summary>
+        <div class="ac-b">
+          <ul class="lst no">
+            <li><b>Tiquetes aéreos:</b> no reembolsables una vez emitidos</li>
+            <li><b>Hoteles en Ciudad de México:</b> tarifa no reembolsable</li>
+            <li><b>Hoteles en Guadalajara:</b> cancelación gratuita hasta la fecha indicada en cada hotel</li>
+            <li><b>Tours y traslados:</b> sujetos a las condiciones del operador</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="ac">
+        <summary><span class="ac-ic info">i</span>Vigencia, documentación y notas<span class="ac-ar" aria-hidden="true"></span></summary>
+        <div class="ac-b">
+          <div class="fine">
+            <p><strong>Vigencia:</strong> esta cotización se elaboró el 9 de julio de 2026 y las tarifas están sujetas a disponibilidad y a cambios sin previo aviso hasta el momento de la confirmación y el pago. Los valores en dólares corresponden a la conversión de los tiquetes aéreos a una tasa de $3.300 COP por dólar; una variación en la tasa de cambio puede modificar el valor final en pesos.</p>
+            <p><strong>Documentación:</strong> los ciudadanos colombianos requieren pasaporte con vigencia mínima de seis meses. Para el ingreso a México se debe tramitar la autorización electrónica correspondiente o presentar visa vigente según el caso. Es responsabilidad de cada viajero verificar y cumplir los requisitos migratorios y sanitarios del destino.</p>
+            <p><strong>Categorías hoteleras:</strong> corresponden a la clasificación local del destino. La asignación final de habitaciones depende de la disponibilidad del hotel al momento del check-in.</p>
+          </div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -944,6 +1004,33 @@ function renderQuote() {
 
 function renderAll() { renderCards(); renderRadios(); renderQuote(); }
 renderAll();
+
+/* ---------- Itinerario día a día ---------- */
+(() => {
+  const botones = [...document.querySelectorAll(".day-i")];
+  const paneles = [...document.querySelectorAll(".day-p")];
+  const mostrar = n => {
+    botones.forEach(b => {
+      const on = b.dataset.day === n;
+      b.classList.toggle("is-on", on);
+      if (on) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
+    });
+    paneles.forEach(p => {
+      const on = p.dataset.day === n;
+      p.hidden = !on;
+      if (on) { p.style.animation = "none"; void p.offsetWidth; p.style.animation = ""; }
+    });
+  };
+  botones.forEach(b => b.addEventListener("click", () => mostrar(b.dataset.day)));
+})();
+
+/* Al imprimir o guardar en PDF, abrir todos los acordeones y restaurarlos después. */
+(() => {
+  const acs = [...document.querySelectorAll("details.ac")];
+  let previo = [];
+  addEventListener("beforeprint", () => { previo = acs.map(d => d.open); acs.forEach(d => d.open = true); });
+  addEventListener("afterprint", () => acs.forEach((d, i) => d.open = previo[i]));
+})();
 </script>
 </body>
 </html>
