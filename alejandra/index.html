@@ -134,11 +134,16 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .exp-b{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
 .exp-b h3{font-size:21px;margin-bottom:10px;line-height:1.1}
 .exp-b .meta{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.rel{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0 0 16px}
+.rel p{margin:0 0 .85em}
+.rel p:last-child{margin-bottom:0}
+.inc-t{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:500;margin:0 0 8px}
 .inc{list-style:none;padding:0;margin:0 0 18px;font-size:13.5px;color:var(--ink-soft)}
 .inc li{padding:3px 0 3px 20px;position:relative}
 .inc li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--oliva)}
-.exp-price{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-family:var(--font-display);font-size:26px;color:var(--tierra)}
-.exp-price small{font-family:var(--font-body);font-size:11px;letter-spacing:.1em;color:var(--mute);text-transform:uppercase;font-weight:400;margin-left:8px}
+.inc.x li::before{background:none;content:"–";font-family:var(--font-display);color:var(--atardecer);top:1px;width:auto;height:auto}
+.nota{margin-top:auto;background:var(--arena-soft);border-radius:12px;padding:13px 15px;font-size:12px;color:var(--ink-soft);line-height:1.6}
+.nota b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tierra);font-weight:500;margin-bottom:5px}
 
 /* ---------- Cotizador ---------- */
 .quote{background:var(--tierra);color:var(--arena)}
@@ -294,8 +299,8 @@ footer p{margin:0 0 8px;line-height:1.7}
         <div class="day-n">Día 5<span>Dom 25 oct</span></div>
         <div class="day-b">
           <h3>Tlaquepaque</h3>
-          <p>Tour por San Pedro Tlaquepaque: calles de casonas, talleres de alfarería, papel picado sobre las cabezas y mariachi en El Parián. El corazón artesano de Jalisco, con guía que conoce a los ceramistas por su nombre.</p>
-          <span class="tag">Visita guiada</span><span class="tag">Cancelación gratuita</span>
+          <p>Caminata de dos horas por San Pedro Tlaquepaque: casonas de la avenida Independencia, galerías de arte, el Museo Regional de la Cerámica, sus dos iglesias y El Parián, la cantina más grande del mundo. Cierra con un taller de dulces tradicionales.</p>
+          <span class="tag">2 horas</span><span class="tag">Guía en español</span><span class="tag">Taller de dulces</span>
         </div>
       </div>
       <div class="day">
@@ -437,7 +442,7 @@ footer p{margin:0 0 8px;line-height:1.7}
     <div class="sec-head">
       <div class="eyebrow">Incluidas en el plan</div>
       <h2>Tres días<br>que valen el viaje</h2>
-      <p>Todas con guía bilingüe español–inglés, entradas incluidas y recogida en el hotel. No son paradas de foto: son los lugares donde México se explica solo.</p>
+      <p>Dos salen desde el hotel con guía bilingüe español–inglés. El de Tlaquepaque es una caminata con guía en español. No son paradas de foto: son los lugares donde México se explica solo.</p>
     </div>
     <div class="exp">
       <article class="exp-card">
@@ -448,14 +453,20 @@ footer p{margin:0 0 8px;line-height:1.7}
         <div class="exp-b">
           <h3>Globo aerostático, Teotihuacán y Basílica de Guadalupe</h3>
           <div class="meta">05:00 – 18:00 · Guía bilingüe</div>
+          <div class="rel">
+            <p>Imagínate volando por los aires en globo, con los tuyos al lado, sobre un escenario que no existe en ninguna otra parte del mundo. Entre 45 minutos y una hora en el aire, dejándose llevar por el viento, con vistas panorámicas del amanecer sobre la zona arqueológica de Teotihuacán.</p>
+            <p>Ya en tierra, el día sigue con una excursión guiada hasta el corazón espiritual de México. Con su guía recorren las pirámides del Sol y de la Luna, la Avenida de los Muertos y los templos de Quetzalcóatl y las Mariposas.</p>
+            <p>Más tarde llegan al santuario de Nuestra Señora de Guadalupe, el lugar religioso más visitado de América Latina. Se construyó en 1531, después de que un campesino de la zona tuviera la visión de una niña rodeada de luz que pedía una iglesia en su honor. Ella se identificó como la Virgen María y dejó su imagen impresa, de forma milagrosa, en la capa del campesino.</p>
+          </div>
+          <p class="inc-t">Incluye</p>
           <ul class="inc">
-            <li>Servicio de recogida y retorno en el hotel</li>
-            <li>Vuelo en globo al amanecer sobre la zona arqueológica</li>
+            <li>Recogida y retorno en el hotel</li>
+            <li>Vuelo en globo al amanecer, de 45 a 60 minutos</li>
             <li>Desayuno, café y vino</li>
-            <li>Todas las entradas incluidas</li>
-            <li>Visita a la Basílica de Santa María de Guadalupe</li>
+            <li>Entradas a Teotihuacán y a la Basílica</li>
+            <li>Guía bilingüe español – inglés</li>
           </ul>
-          <div class="exp-price">$279 <small>USD por persona</small></div>
+          <div class="nota"><b>Información importante</b>Teotihuacán cobra un impuesto de 96 MXN por persona para ingresar a la zona arqueológica. Se paga allá mismo y no está incluido en el plan.</div>
         </div>
       </article>
 
@@ -467,14 +478,22 @@ footer p{margin:0 0 8px;line-height:1.7}
         <div class="exp-b">
           <h3>City Tour, Museo de Antropología y Templo Mayor</h3>
           <div class="meta">08:50 – 12:50 · Guía bilingüe</div>
+          <div class="rel">
+            <p>Los monumentos más importantes de la Ciudad de México en un solo recorrido, con acceso al Museo Nacional de Antropología y al Museo del Templo Mayor.</p>
+            <p>En el museo entran a las 23 salas de exposición, donde está la historia y los objetos tradicionales de México, incluida la Piedra del Sol azteca. De ahí siguen al centro histórico, al Zócalo, donde alguna vez se asentó el imperio azteca. Su guía les cuenta la historia del Gran Tenochtitlán, demolido por la conquista española para levantar encima la ciudad colonial. Enfrente, la Catedral Metropolitana y el bullicio de la gente cruzando la plaza.</p>
+            <p>El recorrido continúa por una de las calles más concurridas del centro, viendo por fuera edificios emblemáticos como el Palacio Nacional. Y termina frente al Palacio de Bellas Artes, para muchos uno de los edificios más bonitos del mundo. Si quieren entrar a ver los murales de Diego Rivera y David Alfaro Siqueiros, la boleta se paga aparte.</p>
+          </div>
+          <p class="inc-t">Incluye</p>
           <ul class="inc">
-            <li>Recorrido por el Centro Histórico</li>
-            <li>Museo Nacional de Antropología</li>
-            <li>Zona arqueológica del Templo Mayor</li>
-            <li>Entradas incluidas</li>
-            <li>Guía bilingüe inglés – español</li>
+            <li>Entradas al Museo Nacional de Antropología</li>
+            <li>Entrada al Museo del Templo Mayor</li>
+            <li>Recorrido por el Zócalo y el Centro Histórico</li>
+            <li>Guía bilingüe español – inglés</li>
           </ul>
-          <div class="exp-price">$67 <small>USD por persona</small></div>
+          <ul class="inc x">
+            <li>Entrada al interior del Palacio de Bellas Artes</li>
+          </ul>
+          <div class="nota"><b>Información importante</b>Hay que registrar un correo electrónico en la reserva y descargar la aplicación Amigo antes de llegar. El itinerario y los horarios pueden cambiar por tráfico, clima o eventos locales, aunque siempre se busca completar el tour entero.</div>
         </div>
       </article>
 
@@ -485,14 +504,19 @@ footer p{margin:0 0 8px;line-height:1.7}
         </div>
         <div class="exp-b">
           <h3>Tour por San Pedro Tlaquepaque</h3>
-          <div class="meta">Visita guiada · Cancelación gratuita</div>
+          <div class="meta">2 horas · Guía en español</div>
+          <div class="rel">
+            <p>La cita es en las letras gigantes de Tlaquepaque. De ahí arranca una caminata de dos horas por lo mejor del pueblo: el escudo del municipio, la avenida Independencia y sus casonas —como la Casa Luna— y galerías de arte, entre ellas la de Sergio Bustamante.</p>
+            <p>El recorrido pasa por el Museo Regional de la Cerámica, donde el guía les habla de la artesanía indígena de Jalisco, y por dos iglesias: San Pedro Apóstol y Nuestra Señora de la Soledad, reconocida por su doble cúpula. Entran al Jardín Hidalgo, se detienen frente a la fachada de arcos de la Presidencia Municipal y llegan a El Parián, la cantina más grande del mundo.</p>
+            <p>Cierra con un taller de dulces tradicionales, para aprender a hacer las delicias de la región.</p>
+          </div>
+          <p class="inc-t">Incluye</p>
           <ul class="inc">
-            <li>Casonas y calles del centro de Tlaquepaque</li>
-            <li>Talleres de alfarería y arte popular</li>
-            <li>El Parián y su tradición de mariachi</li>
-            <li>Guía local</li>
+            <li>Caminata guiada de 2 horas por el centro</li>
+            <li>Taller de dulces tradicionales</li>
+            <li>Guía en español</li>
           </ul>
-          <div class="exp-price">$50 <small>USD por persona</small></div>
+          <div class="nota"><b>Información importante</b>El punto de encuentro son las letras gigantes de Tlaquepaque, no hay recogida en el hotel. Requiere mínimo 2 participantes. Cancelación gratuita hasta 24 horas antes.</div>
         </div>
       </article>
     </div>
@@ -516,7 +540,6 @@ footer p{margin:0 0 8px;line-height:1.7}
             <li>Hasta 3 maletas</li>
             <li>Duración estimada: 60 minutos por trayecto</li>
           </ul>
-          <div class="exp-price">$30 <small>USD por persona</small></div>
         </div>
       </article>
       <article class="exp-card">
@@ -532,7 +555,6 @@ footer p{margin:0 0 8px;line-height:1.7}
             <li>Hasta 3 maletas</li>
             <li>Duración estimada: 30 minutos por trayecto</li>
           </ul>
-          <div class="exp-price">$40 <small>USD por persona</small></div>
         </div>
       </article>
     </div>
@@ -640,14 +662,17 @@ footer p{margin:0 0 8px;line-height:1.7}
           <li>Traslado privado aeropuerto ⇄ hotel en Guadalajara</li>
           <li>Tour de globo aerostático, Teotihuacán y Basílica de Guadalupe</li>
           <li>City Tour con Museo de Antropología y Templo Mayor</li>
-          <li>Tour por San Pedro Tlaquepaque</li>
-          <li>Entradas y guía bilingüe en los tres tours</li>
+          <li>Tour a pie por San Pedro Tlaquepaque, con taller de dulces</li>
+          <li>Entradas a Teotihuacán, la Basílica, el Museo de Antropología y el Templo Mayor</li>
+          <li>Guía bilingüe español–inglés en los dos tours de Ciudad de México, y guía en español en Tlaquepaque</li>
           <li>Acompañamiento de Raíces por WhatsApp, antes y durante el viaje</li>
         </ul>
       </div>
       <div>
         <h3>El plan no incluye</h3>
         <ul class="lst no">
+          <li>Impuesto de 96 MXN por persona para ingresar a Teotihuacán, que se paga en el sitio</li>
+          <li>Entrada al interior del Palacio de Bellas Artes</li>
           <li>Alimentación no especificada en el itinerario</li>
           <li>Bebidas y consumos en hoteles y restaurantes</li>
           <li>Propinas a guías, conductores y personal de hotel</li>
