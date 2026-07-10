@@ -46,7 +46,27 @@ p{margin:0 0 1em}
 .nav-links{display:flex;gap:22px;font-size:12.5px;font-weight:400;letter-spacing:.04em}
 .nav-links a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1.5px solid transparent;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--atardecer);border-bottom-color:var(--atardecer)}
-@media(max-width:900px){.nav-links{display:none}}
+.nav-burger{display:none}
+
+@media(max-width:900px){
+  .nav-in{justify-content:space-between;gap:12px}
+  .nav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:42px;height:38px;padding:0 8px;
+    background:transparent;border:1px solid var(--line);border-radius:11px;cursor:pointer;flex:none}
+  .nav-burger span{display:block;height:2px;border-radius:2px;background:var(--tierra);transition:transform .25s,opacity .2s}
+  .nav-burger[aria-expanded="true"]{border-color:var(--atardecer)}
+  .nav-burger[aria-expanded="true"] span{background:var(--atardecer)}
+  .nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav-burger:focus-visible{outline:2px solid var(--atardecer);outline-offset:2px}
+
+  .nav-links{position:absolute;left:0;right:0;top:100%;display:none;flex-direction:column;gap:0;
+    background:var(--bg);border-bottom:1px solid var(--line);box-shadow:var(--shadow);padding:6px 0}
+  .nav-links.is-open{display:flex}
+  .nav-links a{padding:14px 6vw;font-size:15px;border-bottom:0;border-left:3px solid transparent}
+  .nav-links a:hover,.nav-links a:focus-visible{border-bottom-color:transparent;border-left-color:var(--atardecer);background:rgba(230,202,178,.34)}
+}
+@media(prefers-reduced-motion:reduce){.nav-burger span{transition:none}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
@@ -264,7 +284,10 @@ footer p{margin:0 0 8px;line-height:1.7}
 <nav class="nav">
   <div class="wrap nav-in">
     <a href="#top" aria-label="Raíces"><img src="assets/marca/logo-horizontal.png" alt="Raíces"></a>
-    <div class="nav-links">
+    <button class="nav-burger" type="button" id="nav-burger" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir el menú">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="#itinerario">Itinerario</a>
       <a href="#vuelos">Vuelos</a>
       <a href="#cdmx">Hoteles CDMX</a>
@@ -1007,6 +1030,23 @@ function renderQuote() {
 
 function renderAll() { renderCards(); renderRadios(); renderQuote(); }
 renderAll();
+
+/* ---------- Menú del celular ---------- */
+(() => {
+  const boton = document.getElementById("nav-burger");
+  const menu = document.getElementById("nav-links");
+  if (!boton || !menu) return;
+
+  const cerrar = () => { menu.classList.remove("is-open"); boton.setAttribute("aria-expanded", "false"); boton.setAttribute("aria-label", "Abrir el menú"); };
+  const abrir  = () => { menu.classList.add("is-open");    boton.setAttribute("aria-expanded", "true");  boton.setAttribute("aria-label", "Cerrar el menú"); };
+
+  boton.addEventListener("click", () => menu.classList.contains("is-open") ? cerrar() : abrir());
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", cerrar));
+  addEventListener("keydown", e => { if (e.key === "Escape") cerrar(); });
+  addEventListener("click", e => { if (!menu.contains(e.target) && !boton.contains(e.target)) cerrar(); });
+  // Si se vuelve a escritorio, el menú desplegable no debe quedar en estado abierto.
+  matchMedia("(min-width: 901px)").addEventListener("change", cerrar);
+})();
 
 /* ---------- Itinerario: resaltar el día por el que va el scroll ---------- */
 (() => {
