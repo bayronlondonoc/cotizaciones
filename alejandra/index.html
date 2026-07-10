@@ -761,47 +761,60 @@ footer p{margin:0 0 8px;line-height:1.7}
 </footer>
 
 <script>
-const TRM = 3300;
 const PAX = 3;
-const usd = cop => Math.round(cop / TRM);
 
-const VUELOS = {
-  ida:     { cop: 1241000, label: "Bogotá → Ciudad de México" },
-  interno: { cop:  280000, label: "Ciudad de México → Guadalajara" },
-  regreso: {
-    escala:  { cop: 815000,  nombre: "Con escala", detalle: "08:22 – 19:50 · 1 escala" },
-    directo: { cop: 1710000, nombre: "Directo",    detalle: "18:01 – 00:05 · sin escalas" }
-  }
+const REGRESO = {
+  escala:  { nombre: "Con escala", detalle: "08:22 – 19:50 · 1 escala" },
+  directo: { nombre: "Directo",    detalle: "18:01 – 00:05 · sin escalas" }
 };
 
-const TOURS = [
-  { n: "Globo, Teotihuacán y Basílica", usd: 279 },
-  { n: "City Tour, Antropología y Templo Mayor", usd: 67 },
-  { n: "Tour por Tlaquepaque", usd: 50 }
-];
-const TRASLADOS = [
-  { n: "Traslado privado CDMX", usd: 30 },
-  { n: "Traslado privado Guadalajara", usd: 40 }
-];
-const FIJOS = [...TOURS, ...TRASLADOS].reduce((a, x) => a + x.usd, 0); // 466
+/* Totales por persona, en USD, para cada combinación de hotel CDMX,
+   hotel Guadalajara y vuelo de regreso: [total, reserva, saldo].
+   Se publican ya sumados a propósito: el cliente no ve valores por ítem. */
+const PRECIOS = {
+  "imperial|fenix|escala": [1374, 965, 409],
+  "imperial|fenix|directo": [1645, 1236, 409],
+  "imperial|krystal|escala": [1400, 971, 429],
+  "imperial|krystal|directo": [1671, 1242, 429],
+  "imperial|doubletree|escala": [1439, 981, 458],
+  "imperial|doubletree|directo": [1710, 1252, 458],
+  "exe|fenix|escala": [1412, 1003, 409],
+  "exe|fenix|directo": [1683, 1274, 409],
+  "exe|krystal|escala": [1438, 1009, 429],
+  "exe|krystal|directo": [1709, 1280, 429],
+  "exe|doubletree|escala": [1477, 1019, 458],
+  "exe|doubletree|directo": [1748, 1290, 458],
+  "fontan|fenix|escala": [1426, 1017, 409],
+  "fontan|fenix|directo": [1697, 1288, 409],
+  "fontan|krystal|escala": [1452, 1023, 429],
+  "fontan|krystal|directo": [1723, 1294, 429],
+  "fontan|doubletree|escala": [1491, 1033, 458],
+  "fontan|doubletree|directo": [1762, 1304, 458],
+  "emporio|fenix|escala": [1469, 1060, 409],
+  "emporio|fenix|directo": [1740, 1331, 409],
+  "emporio|krystal|escala": [1495, 1066, 429],
+  "emporio|krystal|directo": [1766, 1337, 429],
+  "emporio|doubletree|escala": [1534, 1076, 458],
+  "emporio|doubletree|directo": [1805, 1347, 458]
+};
 
 const HOTELES_MEX = [
-  { id:"imperial", nombre:"Hotel Imperial Reforma", cadena:"", estrellas:4, usd:120,
+  { id:"imperial", nombre:"Hotel Imperial Reforma", cadena:"", estrellas:4,
     zona:"Centro · Paseo de la Reforma", hab:"Double Standard Room", regimen:"Desayuno continental",
     reembolsable:false, ta:"3,0 · 336 opiniones", badge:"Más vendido",
     img:["assets/hoteles/imperial-1.webp","assets/hoteles/imperial-2.webp"],
     desc:"Edificio porfiriano de 1904 con su cúpula dorada, en la esquina de Reforma con Avenida Hidalgo. Lujo clásico centenario a pasos de la Alameda Central." },
-  { id:"exe", nombre:"Exe Cities Reforma", cadena:"Eurostars · Exe Hotels", estrellas:4, usd:158,
+  { id:"exe", nombre:"Exe Cities Reforma", cadena:"Eurostars · Exe Hotels", estrellas:4,
     zona:"Santa Fe · a 1 km de Reforma", hab:"Triple Room", regimen:"Alojamiento y desayuno",
     reembolsable:false, ta:"3,5 · 169 opiniones", badge:"Sostenible",
     img:["assets/hoteles/exe-1.jpg","assets/hoteles/exe-2.jpg"],
     desc:"Casona del siglo XX renovada, con 51 habitaciones de diseño inspiradas en Nueva York, Tokio y Roma. Gimnasio y sauna incluidos." },
-  { id:"fontan", nombre:"Fontan Reforma", cadena:"Hoteles Fontan", estrellas:4, usd:172,
+  { id:"fontan", nombre:"Fontan Reforma", cadena:"Hoteles Fontan", estrellas:4,
     zona:"Centro · a 400 m de Reforma", hab:"Double Deluxe Twin", regimen:"Desayuno buffet",
     reembolsable:false, ta:"4,0 · 2.371 opiniones", badge:"Más vendido",
     img:["assets/hoteles/fontan-1.jpg","assets/hoteles/fontan-2.jpg"],
     desc:"Fachada intervenida con un mural de catrina y mariposas, frente a la Alameda. Restaurante panorámico y sky-lounge en la azotea." },
-  { id:"emporio", nombre:"Emporio Reforma", cadena:"Grupo Diestra · Luxury Collection", estrellas:4, usd:215,
+  { id:"emporio", nombre:"Emporio Reforma", cadena:"Grupo Diestra · Luxury Collection", estrellas:4,
     zona:"Centro · a 700 m de Reforma", hab:"Double Room Two Beds", regimen:"Alojamiento y desayuno",
     reembolsable:false, ta:"4,5 · 3.109 opiniones", badge:"Luxury Collection",
     img:["assets/hoteles/emporio-1.jpg","assets/hoteles/emporio-2.jpg"],
@@ -809,19 +822,19 @@ const HOTELES_MEX = [
 ];
 
 const HOTELES_GDL = [
-  { id:"fenix", nombre:"Hotel Fenix", cadena:"", estrellas:4, usd:80,
+  { id:"fenix", nombre:"Hotel Fenix", cadena:"", estrellas:4,
     zona:"Centro histórico · a 2 cuadras de la Catedral", hab:"Habitación 2 camas", regimen:"Desayuno buffet",
     reembolsable:true, cancela:"23 de octubre de 2026", pago:"el 13 de octubre de 2026",
     ta:"3,0 · 173 opiniones", badge:"La más económica",
     img:["assets/hoteles/fenix-2.jpg","assets/hoteles/fenix-1.webp"],
     desc:"Clásico del centro tapatío, a dos cuadras de la Catedral, el Teatro Degollado y el Mercado San Juan de Dios. Restaurante María Fénix con buffet mexicano." },
-  { id:"krystal", nombre:"Krystal Urban Guadalajara", cadena:"Krystal Urban Hotels", estrellas:4, usd:106,
+  { id:"krystal", nombre:"Krystal Urban Guadalajara", cadena:"Krystal Urban Hotels", estrellas:4,
     zona:"Arcos Vallarta · Zona Minerva", hab:"Standard Double Bed", regimen:"Alojamiento y desayuno",
     reembolsable:true, cancela:"20 de octubre de 2026", pago:"el 10 de octubre de 2026",
     ta:"4,5 · 837 opiniones", badge:"Más vendido",
     img:["assets/hoteles/krystal-1.jpg","assets/hoteles/krystal-2.jpg"],
     desc:"Hotel urbano de la cadena mexicana Krystal sobre López Cotilla 2077, frente a Plaza Magno. Habitaciones modernas, gimnasio y estacionamiento sin costo." },
-  { id:"doubletree", nombre:"DoubleTree by Hilton Centro Histórico", cadena:"Hilton Worldwide", estrellas:4, usd:145,
+  { id:"doubletree", nombre:"DoubleTree by Hilton Centro Histórico", cadena:"Hilton Worldwide", estrellas:4,
     zona:"Centro histórico · frente a Plaza de Armas", hab:"2 Queen Beds Guest Room", regimen:"Alojamiento y desayuno",
     reembolsable:true, cancela:"22 de octubre de 2026", pago:"el 12 de octubre de 2026",
     ta:"4,5 · 885 opiniones", badge:"Hilton",
@@ -886,23 +899,21 @@ function renderRadios() {
   radios("sel-mex", "mex", HOTELES_MEX.map(h => ({ id: h.id, t: h.nombre.replace("Hotel ", ""), s: h.estrellas + " estrellas" })));
   radios("sel-gdl", "gdl", HOTELES_GDL.map(h => ({ id: h.id, t: h.nombre.replace("Hotel ", "").replace(" Centro Histórico", ""), s: h.estrellas + " estrellas" })));
   radios("sel-ret", "ret", [
-    { id: "escala", t: "Con escala", s: "10 h 28 m · sale 08:22" },
-    { id: "directo", t: "Directo",   s: "5 h 04 m · sale 18:01" }
+    { id: "escala",  t: REGRESO.escala.nombre,  s: "10 h 28 m · sale 08:22" },
+    { id: "directo", t: REGRESO.directo.nombre, s: "5 h 04 m · sale 18:01" }
   ]);
 }
 
 function calc() {
   const hm = HOTELES_MEX.find(h => h.id === state.mex);
   const hg = HOTELES_GDL.find(h => h.id === state.gdl);
-  const aereo = usd(VUELOS.ida.cop) + usd(VUELOS.interno.cop) + usd(VUELOS.regreso[state.ret].cop);
-  const total = aereo + hm.usd + hg.usd + FIJOS;
-  const reserva = aereo + hm.usd + 0.25 * (hg.usd + FIJOS);
-  return { hm, hg, aereo, total, reserva: Math.round(reserva), saldo: total - Math.round(reserva) };
+  const [total, reserva, saldo] = PRECIOS[`${state.mex}|${state.gdl}|${state.ret}`];
+  return { hm, hg, total, reserva, saldo };
 }
 
 function renderQuote() {
   const { hm, hg, total, reserva, saldo } = calc();
-  const r = VUELOS.regreso[state.ret];
+  const r = REGRESO[state.ret];
 
   document.getElementById("t-pax").textContent = money(total);
   document.getElementById("t-all").textContent = money(total * PAX);
