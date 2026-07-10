@@ -71,36 +71,30 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .alt{background:var(--paper)}
 
 /* ---------- Itinerario ---------- */
-.itin{display:grid;grid-template-columns:1fr 340px;gap:30px;align-items:start}
-.itin-panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-soft);padding:38px 40px;min-height:330px}
-.day-p{animation:fadeUp .38s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){.day-p{animation:none}}
-.day-chip{display:inline-block;background:var(--atardecer);color:#fff;font-family:var(--font-display);font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:18px}
-.day-p h3{margin-bottom:14px;font-size:clamp(24px,3.2vw,36px)}
-.day-p p{margin:0 0 4px;color:var(--ink-soft);font-size:15.5px;line-height:1.75}
-.tag{display:inline-block;background:var(--arena-soft);color:var(--tierra);border-radius:999px;padding:3px 11px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin:10px 6px 0 0}
+.itin{display:grid;grid-template-columns:210px 1fr;gap:48px;align-items:start}
+.itin-rail{position:sticky;top:calc(62px + 28px);display:flex;flex-direction:column;gap:2px}
+.rail-i{display:flex;align-items:baseline;gap:10px;text-decoration:none;padding:9px 0 9px 16px;
+  border-left:2px solid var(--line);transition:border-color .25s,color .25s;color:var(--mute)}
+.rail-i em{font-style:normal;font-family:var(--font-display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;flex:none}
+.rail-i span{font-size:12.5px;line-height:1.3}
+.rail-i:hover{color:var(--ink-soft);border-left-color:var(--arena)}
+.rail-i.is-on{color:var(--atardecer);border-left-color:var(--atardecer)}
+.rail-i.is-on span{color:var(--tierra);font-weight:500}
+.rail-i:focus-visible{outline:2px solid var(--atardecer);outline-offset:2px}
 
-.itin-nav{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft)}
-.day-i{appearance:none;background:transparent;border:0;border-bottom:1px solid var(--line);border-left:4px solid transparent;text-align:left;padding:16px 20px;cursor:pointer;font-family:var(--font-body);transition:background .2s,border-color .2s;display:block;width:100%}
-.day-i:last-child{border-bottom:0}
-.day-i em{display:block;font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--atardecer);font-weight:500;margin-bottom:3px}
-.day-i b{display:block;font-weight:400;font-size:15px;color:var(--ink-soft);line-height:1.3}
-.day-i:hover{background:rgba(230,202,178,.28)}
-.day-i.is-on{background:var(--arena);border-left-color:var(--atardecer)}
-.day-i.is-on b{color:var(--tierra);font-weight:500}
-.day-i:focus-visible{outline:2px solid var(--atardecer);outline-offset:-2px}
+.days{display:grid;gap:0;border-top:1px solid var(--line)}
+.day{display:grid;grid-template-columns:130px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start;scroll-margin-top:96px;transition:opacity .35s}
+.day-n{font-family:var(--font-display);font-size:15px;letter-spacing:.08em;color:var(--atardecer);text-transform:uppercase;padding-top:4px}
+.day-n span{display:block;font-family:var(--font-body);font-size:12px;letter-spacing:.1em;color:var(--mute);font-weight:400;margin-top:4px}
+.day-b h3{margin-bottom:8px}
+.day-b p{margin:0;color:var(--ink-soft);font-size:15px}
+.tag{display:inline-block;background:var(--arena-soft);color:var(--tierra);border-radius:999px;padding:3px 11px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin:8px 6px 0 0}
 
-@media(max-width:900px){
-  .itin{display:flex;flex-direction:column-reverse;align-items:stretch;gap:18px}
-  .itin-panel,.itin-nav{min-width:0;max-width:100%}
-  .itin-nav{flex-direction:row;overflow-x:auto;border-radius:999px;scrollbar-width:none}
-  .itin-nav::-webkit-scrollbar{display:none}
-  .day-i{border-bottom:0;border-left:0;border-top:3px solid transparent;padding:12px 18px;white-space:nowrap;width:auto;flex:none}
-  .day-i.is-on{border-left-color:transparent;border-top-color:var(--atardecer)}
-  .day-i b{font-size:13.5px}
-  .itin-panel{padding:28px 24px}
+@media(max-width:980px){
+  .itin{grid-template-columns:1fr;gap:0}
+  .itin-rail{display:none}
 }
+@media(max-width:640px){.day{grid-template-columns:1fr;gap:8px}}
 
 /* ---------- Vuelos ---------- */
 .flights{display:grid;gap:18px}
@@ -255,15 +249,12 @@ footer p{margin:0 0 8px;line-height:1.7}
 .credits a{color:rgba(230,202,178,.5);text-decoration:underline}
 
 @media print{
-  .nav,.cta,.pick,.itin-nav,.ac-ar{display:none}
+  .nav,.cta,.pick,.itin-rail,.ac-ar{display:none}
   .hero{min-height:auto}
   body{background:#fff}
   section{padding:24px 0;break-inside:avoid}
-  .card,.exp-card,.flight,.ac,.day-p{break-inside:avoid;box-shadow:none}
+  .card,.exp-card,.flight,.ac,.day{break-inside:avoid;box-shadow:none}
   .itin{display:block}
-  .itin-panel{border:0;padding:0;box-shadow:none}
-  .day-p[hidden]{display:block!important}
-  .day-p{animation:none;margin-bottom:22px}
   .ac-b{animation:none}
 }
 </style>
@@ -310,53 +301,65 @@ footer p{margin:0 0 8px;line-height:1.7}
       <p>Un plan que empieza con la Reforma al amanecer y termina con el olor a barro de Tlaquepaque. Cada día está pensado para que no corran, sino para que lleguen.</p>
     </div>
     <div class="itin">
-      <div class="itin-panel">
-        <article class="day-p" data-day="1">
-          <span class="day-chip">Día 1 · Mié 21 oct</span>
-          <h3>Bogotá → Ciudad de México</h3>
-          <p>Vuelo directo con Aeroméxico. A la llegada los espera el traslado privado hasta el hotel, en pleno corredor de Paseo de la Reforma. El resto del día es suyo: la Alameda Central y el Palacio de Bellas Artes quedan a pasos.</p>
-          <div><span class="tag">Vuelo</span><span class="tag">Traslado privado</span><span class="tag">Check-in</span></div>
-        </article>
-        <article class="day-p" data-day="2" hidden>
-          <span class="day-chip">Día 2 · Jue 22 oct</span>
-          <h3>Globo sobre Teotihuacán</h3>
-          <p>Recogida en el hotel de madrugada. Amanecen flotando sobre la Pirámide del Sol y la Calzada de los Muertos. Al bajar, desayuno, vino y café. En el regreso, la Basílica de Santa María de Guadalupe. Un día largo y de los que no se olvidan.</p>
-          <div><span class="tag">05:00 – 18:00</span><span class="tag">Guía bilingüe</span><span class="tag">Entradas incluidas</span></div>
-        </article>
-        <article class="day-p" data-day="3" hidden>
-          <span class="day-chip">Día 3 · Vie 23 oct</span>
-          <h3>La ciudad por dentro</h3>
-          <p>City tour por la mañana: el Museo Nacional de Antropología —donde vive la Piedra del Sol— y el Templo Mayor, los cimientos mexicas debajo del Centro Histórico. Por la tarde, Coyoacán o Roma-Condesa, según el ánimo.</p>
-          <div><span class="tag">08:50 – 12:50</span><span class="tag">Guía bilingüe</span><span class="tag">Tarde libre</span></div>
-        </article>
-        <article class="day-p" data-day="4" hidden>
-          <span class="day-chip">Día 4 · Sáb 24 oct</span>
-          <h3>Ciudad de México → Guadalajara</h3>
-          <p>Traslado al aeropuerto y vuelo con Aeroméxico. Poco más de hora y media después, Jalisco. Traslado privado al hotel en el centro histórico tapatío y tarde libre para la Catedral, el Hospicio Cabañas y los murales de Orozco.</p>
-          <div><span class="tag">Vuelo interno</span><span class="tag">Traslado privado</span></div>
-        </article>
-        <article class="day-p" data-day="5" hidden>
-          <span class="day-chip">Día 5 · Dom 25 oct</span>
-          <h3>Tlaquepaque</h3>
-          <p>Caminata de dos horas por San Pedro Tlaquepaque: casonas de la avenida Independencia, galerías de arte, el Museo Regional de la Cerámica, sus dos iglesias y El Parián, la cantina más grande del mundo. Cierra con un taller de dulces tradicionales.</p>
-          <div><span class="tag">2 horas</span><span class="tag">Guía en español</span><span class="tag">Taller de dulces</span></div>
-        </article>
-        <article class="day-p" data-day="6" hidden>
-          <span class="day-chip">Día 6 · Lun 26 oct</span>
-          <h3>Guadalajara → Bogotá</h3>
-          <p>Según la opción de vuelo que elijan, la mañana queda libre o salen temprano. Traslado privado al aeropuerto y regreso a casa con Avianca.</p>
-          <div><span class="tag">Traslado privado</span><span class="tag">Vuelo de regreso</span></div>
-        </article>
-      </div>
-
-      <nav class="itin-nav" aria-label="Días del itinerario">
-        <button class="day-i is-on" data-day="1" type="button" aria-current="true"><em>Día 1</em><b>Llegada a CDMX</b></button>
-        <button class="day-i" data-day="2" type="button"><em>Día 2</em><b>Globo sobre Teotihuacán</b></button>
-        <button class="day-i" data-day="3" type="button"><em>Día 3</em><b>La ciudad por dentro</b></button>
-        <button class="day-i" data-day="4" type="button"><em>Día 4</em><b>Vuelo a Guadalajara</b></button>
-        <button class="day-i" data-day="5" type="button"><em>Día 5</em><b>Tlaquepaque</b></button>
-        <button class="day-i" data-day="6" type="button"><em>Día 6</em><b>Regreso a Bogotá</b></button>
+      <nav class="itin-rail" aria-label="Días del itinerario">
+        <a class="rail-i is-on" href="#dia-1" aria-current="true"><em>Día 1</em><span>Llegada a CDMX</span></a>
+        <a class="rail-i" href="#dia-2"><em>Día 2</em><span>Globo sobre Teotihuacán</span></a>
+        <a class="rail-i" href="#dia-3"><em>Día 3</em><span>La ciudad por dentro</span></a>
+        <a class="rail-i" href="#dia-4"><em>Día 4</em><span>Vuelo a Guadalajara</span></a>
+        <a class="rail-i" href="#dia-5"><em>Día 5</em><span>Tlaquepaque</span></a>
+        <a class="rail-i" href="#dia-6"><em>Día 6</em><span>Regreso a Bogotá</span></a>
       </nav>
+
+      <div class="days">
+        <div class="day" id="dia-1">
+          <div class="day-n">Día 1<span>Mié 21 oct</span></div>
+          <div class="day-b">
+            <h3>Bogotá → Ciudad de México</h3>
+            <p>Vuelo directo con Aeroméxico. A la llegada los espera el traslado privado hasta el hotel, en pleno corredor de Paseo de la Reforma. El resto del día es suyo: la Alameda Central y el Palacio de Bellas Artes quedan a pasos.</p>
+            <span class="tag">Vuelo</span><span class="tag">Traslado privado</span><span class="tag">Check-in</span>
+          </div>
+        </div>
+        <div class="day" id="dia-2">
+          <div class="day-n">Día 2<span>Jue 22 oct</span></div>
+          <div class="day-b">
+            <h3>Globo sobre Teotihuacán</h3>
+            <p>Recogida en el hotel de madrugada. Amanecen flotando sobre la Pirámide del Sol y la Calzada de los Muertos. Al bajar, desayuno, vino y café. En el regreso, la Basílica de Santa María de Guadalupe. Un día largo y de los que no se olvidan.</p>
+            <span class="tag">05:00 – 18:00</span><span class="tag">Guía bilingüe</span><span class="tag">Entradas incluidas</span>
+          </div>
+        </div>
+        <div class="day" id="dia-3">
+          <div class="day-n">Día 3<span>Vie 23 oct</span></div>
+          <div class="day-b">
+            <h3>La ciudad por dentro</h3>
+            <p>City tour por la mañana: el Museo Nacional de Antropología —donde vive la Piedra del Sol— y el Templo Mayor, los cimientos mexicas debajo del Centro Histórico. Por la tarde, Coyoacán o Roma-Condesa, según el ánimo.</p>
+            <span class="tag">08:50 – 12:50</span><span class="tag">Guía bilingüe</span><span class="tag">Tarde libre</span>
+          </div>
+        </div>
+        <div class="day" id="dia-4">
+          <div class="day-n">Día 4<span>Sáb 24 oct</span></div>
+          <div class="day-b">
+            <h3>Ciudad de México → Guadalajara</h3>
+            <p>Traslado al aeropuerto y vuelo con Aeroméxico. Poco más de hora y media después, Jalisco. Traslado privado al hotel en el centro histórico tapatío y tarde libre para la Catedral, el Hospicio Cabañas y los murales de Orozco.</p>
+            <span class="tag">Vuelo interno</span><span class="tag">Traslado privado</span>
+          </div>
+        </div>
+        <div class="day" id="dia-5">
+          <div class="day-n">Día 5<span>Dom 25 oct</span></div>
+          <div class="day-b">
+            <h3>Tlaquepaque</h3>
+            <p>Caminata de dos horas por San Pedro Tlaquepaque: casonas de la avenida Independencia, galerías de arte, el Museo Regional de la Cerámica, sus dos iglesias y El Parián, la cantina más grande del mundo. Cierra con un taller de dulces tradicionales.</p>
+            <span class="tag">2 horas</span><span class="tag">Guía en español</span><span class="tag">Taller de dulces</span>
+          </div>
+        </div>
+        <div class="day" id="dia-6">
+          <div class="day-n">Día 6<span>Lun 26 oct</span></div>
+          <div class="day-b">
+            <h3>Guadalajara → Bogotá</h3>
+            <p>Según la opción de vuelo que elijan, la mañana queda libre o salen temprano. Traslado privado al aeropuerto y regreso a casa con Avianca.</p>
+            <span class="tag">Traslado privado</span><span class="tag">Vuelo de regreso</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -696,7 +699,7 @@ footer p{margin:0 0 8px;line-height:1.7}
       <h2>Qué incluye<br>y qué no</h2>
     </div>
     <div class="acc">
-      <details class="ac" open>
+      <details class="ac">
         <summary><span class="ac-ic yes">+</span>El plan incluye<span class="ac-ar" aria-hidden="true"></span></summary>
         <div class="ac-b">
           <ul class="lst yes">
@@ -1005,23 +1008,30 @@ function renderQuote() {
 function renderAll() { renderCards(); renderRadios(); renderQuote(); }
 renderAll();
 
-/* ---------- Itinerario día a día ---------- */
+/* ---------- Itinerario: resaltar el día por el que va el scroll ---------- */
 (() => {
-  const botones = [...document.querySelectorAll(".day-i")];
-  const paneles = [...document.querySelectorAll(".day-p")];
-  const mostrar = n => {
-    botones.forEach(b => {
-      const on = b.dataset.day === n;
-      b.classList.toggle("is-on", on);
-      if (on) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
-    });
-    paneles.forEach(p => {
-      const on = p.dataset.day === n;
-      p.hidden = !on;
-      if (on) { p.style.animation = "none"; void p.offsetWidth; p.style.animation = ""; }
-    });
+  const dias = [...document.querySelectorAll(".day")];
+  const enlaces = [...document.querySelectorAll(".rail-i")];
+  if (!dias.length || !enlaces.length) return;
+
+  const marcar = id => enlaces.forEach(a => {
+    const on = a.getAttribute("href") === "#" + id;
+    a.classList.toggle("is-on", on);
+    if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+  });
+
+  // El día activo es el último cuyo borde superior ya pasó la línea de lectura.
+  const lineaDeLectura = () => window.innerHeight * 0.32;
+  const actualizar = () => {
+    const linea = lineaDeLectura();
+    let activo = dias[0];
+    for (const d of dias) if (d.getBoundingClientRect().top <= linea) activo = d;
+    marcar(activo.id);
   };
-  botones.forEach(b => b.addEventListener("click", () => mostrar(b.dataset.day)));
+
+  addEventListener("scroll", actualizar, { passive: true });
+  addEventListener("resize", actualizar);
+  actualizar();
 })();
 
 /* Al imprimir o guardar en PDF, abrir todos los acordeones y restaurarlos después. */
