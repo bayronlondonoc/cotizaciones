@@ -10,8 +10,10 @@ Cotización publicada: https://bayronlondonoc.github.io/cotizaciones/alejandra/
 ## Reglas de precio aplicadas
 
 - Los precios mostrados son **de venta**. Los netos no se publican ni se versionan en este repo.
+- **Los precios por hotel y por vuelo no se muestran al cliente.** Elige entre opciones a ciegas y solo ve el total del plan armado. Es manejo interno.
 - Valor de reserva = 100% aéreo + 100% hotel CDMX + 25% (hotel GDL + tours + traslados).
 - Fecha límite de pago del 100% = límite de cancelación gratuita del hotel de Guadalajara elegido, menos 10 días.
+- El botón «Reservar por WhatsApp» arma el mensaje con la combinación elegida (hoteles, vuelo de regreso, total, valor de reserva y fecha límite).
 
 | Hotel GDL | Cancelación gratuita hasta | Pago del 100% |
 |---|---|---|

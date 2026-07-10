@@ -41,9 +41,9 @@ p{margin:0 0 1em}
 
 /* ---------- Nav ---------- */
 .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,228,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:66px}
-.nav img{height:30px;width:auto}
-.nav-links{display:flex;gap:24px;font-size:13px;font-weight:400;letter-spacing:.04em}
+.nav-in{display:flex;align-items:center;justify-content:center;gap:38px;height:62px}
+.nav img{height:24px;width:auto}
+.nav-links{display:flex;gap:22px;font-size:12.5px;font-weight:400;letter-spacing:.04em}
 .nav-links a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1.5px solid transparent;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--atardecer);border-bottom-color:var(--atardecer)}
 @media(max-width:900px){.nav-links{display:none}}
@@ -51,10 +51,12 @@ p{margin:0 0 1em}
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,32,24,.30) 0%,rgba(59,32,24,.10) 35%,rgba(104,54,44,.86) 100%)}
-.hero-in{position:relative;z-index:2;padding:56px 0 60px;width:100%}
-.hero-logo{height:44px;width:auto;margin-bottom:auto}
-.hero h1{color:#fff;margin:18px 0 10px}
+.hero::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(45,24,18,.62) 0%,rgba(45,24,18,.28) 45%,rgba(45,24,18,0) 80%),
+  linear-gradient(180deg,rgba(59,32,24,.35) 0%,rgba(59,32,24,.12) 22%,rgba(85,42,33,.58) 48%,rgba(85,42,33,.90) 78%,rgba(72,35,27,.97) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;padding:56px 6vw 62px 20vw}
+@media(max-width:900px){.hero-in{padding:48px 6vw 52px}}
+.hero h1{color:#fff;margin:14px 0 10px}
 .hero .kicker{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--arena);font-weight:500}
 .hero .sub{font-size:clamp(15px,1.9vw,19px);color:#F6E7D6;max-width:52ch;font-weight:300}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
@@ -117,10 +119,8 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .facts{list-style:none;padding:0;margin:0 0 16px;font-size:13px;color:var(--ink-soft)}
 .facts li{padding:6px 0;border-top:1px solid var(--line);display:flex;gap:10px}
 .facts li b{font-weight:500;color:var(--tierra);min-width:88px;flex:none}
-.price-row{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
-.price{font-family:var(--font-display);font-size:32px;color:var(--tierra);line-height:1}
-.price small{font-family:var(--font-body);font-size:11px;letter-spacing:.1em;color:var(--mute);display:block;text-transform:uppercase;font-weight:400;margin-top:6px}
-.pick{border:1.5px solid var(--tierra);background:transparent;color:var(--tierra);font-family:var(--font-body);font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border-radius:999px;cursor:pointer;transition:.2s;white-space:nowrap}
+.price-row{margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.pick{width:100%;border:1.5px solid var(--tierra);background:transparent;color:var(--tierra);font-family:var(--font-body);font-weight:500;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;border-radius:999px;cursor:pointer;transition:.2s;white-space:nowrap}
 .pick:hover{background:var(--tierra);color:var(--arena)}
 .card.sel .pick{background:var(--atardecer);border-color:var(--atardecer);color:#fff}
 .canc{font-size:12px;padding:8px 12px;border-radius:10px;margin-bottom:14px;line-height:1.45}
@@ -145,7 +145,7 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .quote h2,.quote h3{color:var(--arena)}
 .quote .eyebrow{color:var(--arena)}
 .quote .sec-head p{color:rgba(230,202,178,.82)}
-.q-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start}
+.q-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:start}
 @media(max-width:940px){.q-grid{grid-template-columns:1fr}}
 .q-panel{background:rgba(253,250,243,.06);border:1px solid rgba(230,202,178,.22);border-radius:var(--radius);padding:28px 30px}
 .q-sel{margin-bottom:22px}
@@ -158,11 +158,7 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .q-opt span em{font-style:normal;opacity:.6;font-size:11.5px;display:block;letter-spacing:.04em}
 .q-opt input:checked + span{background:var(--atardecer);border-color:var(--atardecer);color:#fff}
 .q-opt input:focus-visible + span{outline:2px solid var(--arena);outline-offset:2px}
-.q-lines{list-style:none;padding:0;margin:0}
-.q-lines li{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px dashed rgba(230,202,178,.2);font-size:14px}
-.q-lines li span:first-child{color:rgba(230,202,178,.8)}
-.q-lines li b{font-weight:500;white-space:nowrap}
-.q-total{margin-top:26px;padding:24px;border-radius:14px;background:var(--atardecer);color:#fff}
+.q-total{padding:28px 30px;border-radius:var(--radius);background:var(--atardecer);color:#fff}
 .q-total .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
 .q-total .big{font-family:var(--font-display);font-size:clamp(44px,6vw,64px);line-height:1;margin:8px 0 4px}
 .q-total .sm{font-size:13.5px;opacity:.9}
@@ -224,7 +220,7 @@ footer p{margin:0 0 8px;line-height:1.7}
 
 <nav class="nav">
   <div class="wrap nav-in">
-    <a href="#top" aria-label="Raíces"><img src="assets/marca/logo-principal.png" alt="Raíces"></a>
+    <a href="#top" aria-label="Raíces"><img src="assets/marca/logo-horizontal.png" alt="Raíces"></a>
     <div class="nav-links">
       <a href="#itinerario">Itinerario</a>
       <a href="#vuelos">Vuelos</a>
@@ -238,10 +234,9 @@ footer p{margin:0 0 8px;line-height:1.7}
 </nav>
 
 <header class="hero" id="top">
-  <img class="bg" src="assets/destinos/hero.jpg" alt="Ciudad de México">
-  <div class="wrap hero-in">
-    <img class="hero-logo" src="assets/marca/logo-blanco.png" alt="Raíces">
-    <div class="kicker" style="margin-top:28px">Preparado para Alejandra</div>
+  <img class="bg" src="assets/destinos/hero.jpg" alt="Palacio de Bellas Artes, Ciudad de México">
+  <div class="hero-in">
+    <div class="kicker">Preparado para Alejandra</div>
     <h1>México<br>de raíz</h1>
     <p class="sub">Seis días entre la ciudad que no duerme y la cuna del mariachi. Tres noches en Ciudad de México, dos en Guadalajara, y todo lo que hay en medio.</p>
     <div class="hero-meta">
@@ -510,7 +505,7 @@ footer p{margin:0 0 8px;line-height:1.7}
     <div class="exp">
       <article class="exp-card">
         <div class="card-img">
-          <img src="assets/destinos/cdmx.jpg" alt="Palacio de Bellas Artes, Ciudad de México">
+          <img src="assets/destinos/angel.jpg" alt="Ángel de la Independencia, Paseo de la Reforma">
           <span class="badge">Ciudad de México</span>
         </div>
         <div class="exp-b">
@@ -570,11 +565,6 @@ footer p{margin:0 0 8px;line-height:1.7}
       </div>
 
       <div>
-        <div class="q-panel">
-          <h3 style="font-size:17px;letter-spacing:.1em;margin-bottom:18px">Detalle por persona</h3>
-          <ul class="q-lines" id="q-lines"></ul>
-        </div>
-
         <div class="q-total">
           <div class="lbl">Valor total por persona</div>
           <div class="big" id="t-pax">—</div>
@@ -585,7 +575,7 @@ footer p{margin:0 0 8px;line-height:1.7}
           <div class="sm">USD</div>
         </div>
 
-        <p class="q-note">Valores en dólares estadounidenses, redondeados. Los tiquetes fueron convertidos a una tasa de <b>$3.300 COP por dólar</b>. Sujetos a disponibilidad al momento de confirmar.</p>
+        <p class="q-note">Incluye los tres tiquetes aéreos, las cinco noches de alojamiento con desayuno, los tres tours con guía y entradas, y los dos traslados privados. Valores en dólares estadounidenses, redondeados, sujetos a disponibilidad al momento de confirmar.</p>
       </div>
     </div>
   </div>
@@ -689,10 +679,11 @@ footer p{margin:0 0 8px;line-height:1.7}
 
 <section class="cta">
   <div class="wrap">
-    <div class="eyebrow" style="color:rgba(255,255,255,.7)">¿Seguimos?</div>
-    <h2>Hablemos por WhatsApp</h2>
-    <p>Cualquier ajuste que quieras —cambiar un hotel, sumar una noche, mover un vuelo— lo resolvemos por ahí mismo. Sin formularios y sin apuros.</p>
-    <a class="btn" href="https://wa.me/573122738001?text=Hola%20Ra%C3%ADces%2C%20vi%20la%20cotizaci%C3%B3n%20de%20M%C3%A9xico%20y%20quiero%20avanzar." target="_blank" rel="noopener">Escribir a Raíces</a>
+    <div class="eyebrow" style="color:rgba(255,255,255,.7)">¿Lista?</div>
+    <h2>Reservar y pagar</h2>
+    <p>Al tocar el botón se abre WhatsApp con el plan que armaste arriba —los hoteles, el vuelo de regreso y los valores— ya escrito. Solo lo envías y seguimos por ahí. Sin formularios y sin apuros.</p>
+    <a class="btn js-wa" href="https://wa.me/573122738001" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+    <p style="font-size:13.5px;margin-top:26px;opacity:.75">¿Prefieres ajustar algo antes —cambiar un hotel, sumar una noche, mover un vuelo? Escríbenos y lo resolvemos.</p>
   </div>
 </section>
 
@@ -733,8 +724,8 @@ footer p{margin:0 0 8px;line-height:1.7}
       <a href="https://www.krystalurban-guadalajara.com/" target="_blank" rel="noopener nofollow">Krystal Urban Guadalajara</a> y
       <a href="https://stories.hilton.com/" target="_blank" rel="noopener nofollow">DoubleTree by Hilton Guadalajara Centro Histórico</a>.
       Imágenes de destino vía Wikimedia Commons:
-      Paseo de la Reforma © Mario Yaír TS (CC BY-SA 4.0);
-      Palacio de Bellas Artes © José Luiz Bernardes Ribeiro (CC BY-SA 4.0);
+      Palacio de Bellas Artes © Daniel Case (CC BY-SA 3.0);
+      Ángel de la Independencia © Mario Yaír TS (CC BY-SA 4.0);
       Catedral de Guadalajara © ProtoplasmaKid (CC BY-SA 4.0);
       Teotihuacán © Ralibreros112 (CC BY-SA 4.0);
       Piedra del Sol © El Comandante (CC BY-SA 3.0);
@@ -840,8 +831,7 @@ function cardHTML(h, group) {
         <li><b>Régimen</b><span>${h.regimen}</span></li>
       </ul>
       <div class="price-row">
-        <div class="price">${money(h.usd)}<small>USD por persona</small></div>
-        <button class="pick" type="button">${state[group] === h.id ? "Elegido" : "Elegir"}</button>
+        <button class="pick" type="button">${state[group] === h.id ? "Elegido" : "Elegir este hotel"}</button>
       </div>
     </div>
   </article>`;
@@ -868,11 +858,11 @@ function radios(id, group, items) {
 }
 
 function renderRadios() {
-  radios("sel-mex", "mex", HOTELES_MEX.map(h => ({ id: h.id, t: h.nombre.replace("Hotel ", ""), s: money(h.usd) + " p.p." })));
-  radios("sel-gdl", "gdl", HOTELES_GDL.map(h => ({ id: h.id, t: h.nombre.replace("Hotel ", "").replace(" Centro Histórico", ""), s: money(h.usd) + " p.p." })));
+  radios("sel-mex", "mex", HOTELES_MEX.map(h => ({ id: h.id, t: h.nombre.replace("Hotel ", ""), s: h.estrellas + " estrellas" })));
+  radios("sel-gdl", "gdl", HOTELES_GDL.map(h => ({ id: h.id, t: h.nombre.replace("Hotel ", "").replace(" Centro Histórico", ""), s: h.estrellas + " estrellas" })));
   radios("sel-ret", "ret", [
-    { id: "escala", t: "Con escala", s: money(usd(VUELOS.regreso.escala.cop)) + " p.p. · 10 h 28 m" },
-    { id: "directo", t: "Directo",   s: money(usd(VUELOS.regreso.directo.cop)) + " p.p. · 5 h 04 m" }
+    { id: "escala", t: "Con escala", s: "10 h 28 m · sale 08:22" },
+    { id: "directo", t: "Directo",   s: "5 h 04 m · sale 18:01" }
   ]);
 }
 
@@ -886,17 +876,8 @@ function calc() {
 }
 
 function renderQuote() {
-  const { hm, hg, aereo, total, reserva, saldo } = calc();
+  const { hm, hg, total, reserva, saldo } = calc();
   const r = VUELOS.regreso[state.ret];
-
-  document.getElementById("q-lines").innerHTML = `
-    <li><span>Aéreo Bogotá → CDMX</span><b>${money(usd(VUELOS.ida.cop))}</b></li>
-    <li><span>Aéreo CDMX → Guadalajara</span><b>${money(usd(VUELOS.interno.cop))}</b></li>
-    <li><span>Aéreo Guadalajara → Bogotá <em style="opacity:.55;font-style:normal">(${r.nombre.toLowerCase()})</em></span><b>${money(usd(r.cop))}</b></li>
-    <li><span>${hm.nombre} · 3 noches</span><b>${money(hm.usd)}</b></li>
-    <li><span>${hg.nombre} · 2 noches</span><b>${money(hg.usd)}</b></li>
-    <li><span>3 tours con guía y entradas</span><b>${money(TOURS.reduce((a, t) => a + t.usd, 0))}</b></li>
-    <li><span>2 traslados privados</span><b>${money(TRASLADOS.reduce((a, t) => a + t.usd, 0))}</b></li>`;
 
   document.getElementById("t-pax").textContent = money(total);
   document.getElementById("t-all").textContent = money(total * PAX);
@@ -907,6 +888,22 @@ function renderQuote() {
   document.getElementById("p-reserva3").textContent = money(reserva * PAX) + " USD";
   document.getElementById("p-fecha").textContent = "a más tardar " + hg.pago;
   document.getElementById("p-hotel").textContent = hg.nombre;
+
+  const msg =
+    `Hola Raíces, soy Alejandra. Quiero reservar y pagar el plan a México del 21 al 26 de octubre de 2026, para 3 adultos, con estas condiciones:\n\n` +
+    `• Hotel en Ciudad de México: ${hm.nombre} (3 noches)\n` +
+    `• Hotel en Guadalajara: ${hg.nombre} (2 noches)\n` +
+    `• Vuelo de regreso: ${r.nombre.toLowerCase()} (${r.detalle})\n` +
+    `• Incluye los 3 tours y los 2 traslados privados\n\n` +
+    `Valor total por persona: ${money(total)} USD\n` +
+    `Valor total 3 adultos: ${money(total * PAX)} USD\n\n` +
+    `Para separar pago ahora ${money(reserva)} USD por persona (${money(reserva * PAX)} USD en total), ` +
+    `y el saldo de ${money(saldo)} USD por persona a más tardar ${hg.pago}.\n\n` +
+    `¿Cómo hago el pago?`;
+
+  document.querySelectorAll("a.js-wa").forEach(a => {
+    a.href = "https://wa.me/573122738001?text=" + encodeURIComponent(msg);
+  });
 }
 
 function renderAll() { renderCards(); renderRadios(); renderQuote(); }
