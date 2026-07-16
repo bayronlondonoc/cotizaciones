@@ -179,8 +179,17 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .q-opt span em{font-style:normal;opacity:.6;font-size:11px;display:block;letter-spacing:.03em}
 .q-opt input:checked + span{background:var(--atardecer);border-color:var(--atardecer);color:#fff}
 .q-opt input:focus-visible + span{outline:2px solid var(--arena);outline-offset:2px}
-.q-select{width:100%;font-family:var(--font-body);font-size:14.5px;color:var(--tierra);background:var(--arena);border:1px solid rgba(230,202,178,.32);border-radius:12px;padding:12px 14px;cursor:pointer}
-.q-select:focus{outline:2px solid var(--arena);outline-offset:2px}
+.hsel{position:relative}
+.hsel-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:var(--font-body);font-size:14.5px;color:var(--tierra);background:var(--arena);border:1px solid rgba(230,202,178,.32);border-radius:12px;padding:12px 14px;cursor:pointer;text-align:left}
+.hsel-btn:focus-visible{outline:2px solid var(--arena);outline-offset:2px}
+.hsel-arrow{width:13px;height:13px;flex:none;transition:transform .2s ease}
+.hsel.open .hsel-arrow{transform:rotate(180deg)}
+.hsel-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:60;max-height:280px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  background:var(--arena);border:1px solid rgba(230,202,178,.4);border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.4);
+  list-style:none;margin:0;padding:6px;display:none}
+.hsel.open .hsel-list{display:block}
+.hsel-list li{padding:11px 12px;border-radius:8px;font-size:14px;line-height:1.35;color:var(--tierra);cursor:pointer}
+.hsel-list li:hover,.hsel-list li.active{background:rgba(104,54,44,.16)}
 .q-flag{display:inline-block;margin-top:8px;font-size:11.5px;color:rgba(230,202,178,.75)}
 .q-total{padding:28px 30px;border-radius:var(--radius);background:var(--atardecer);color:#fff}
 .q-total .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
@@ -448,8 +457,14 @@ footer p{margin:0 0 8px;line-height:1.7}
           <div class="q-opts" id="sel-vuelo" role="radiogroup" aria-label="Aerolínea"></div>
         </div>
         <div class="q-sel">
-          <label for="sel-hotel">Hotel</label>
-          <select class="q-select" id="sel-hotel"></select>
+          <label id="hotel-label">Hotel</label>
+          <div class="hsel" id="hsel">
+            <button type="button" class="hsel-btn" id="hsel-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="hotel-label">
+              <span id="hsel-current">—</span>
+              <svg class="hsel-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7l5 5 5-5"/></svg>
+            </button>
+            <ul class="hsel-list" id="hsel-list" role="listbox" aria-labelledby="hotel-label"></ul>
+          </div>
           <span class="q-flag" id="hotel-flag"></span>
           <div class="q-perk" id="q-perk" style="display:none"></div>
         </div>
@@ -782,14 +797,40 @@ function radios(id, group, items){
   });
 }
 
+function hotelLabel(h){ return h.nombre + (h.adultos ? " ★" : "") + (h.recomendado ? " — Recomendado" : ""); }
+
+function closeHsel(){
+  document.getElementById("hsel").classList.remove("open");
+  document.getElementById("hsel-btn").setAttribute("aria-expanded", "false");
+}
+
+function renderHotelPicker(){
+  const current = HOTELES.find(h => h.id === state.hotel);
+  document.getElementById("hsel-current").textContent = hotelLabel(current);
+
+  const list = document.getElementById("hsel-list");
+  list.innerHTML = HOTELES.map(h => `<li role="option" aria-selected="${state.hotel===h.id}" data-id="${h.id}" class="${state.hotel===h.id?"active":""}">${hotelLabel(h)}</li>`).join("");
+  list.querySelectorAll("li").forEach(li => {
+    li.addEventListener("click", () => { state.hotel = li.dataset.id; closeHsel(); renderAll(); });
+  });
+}
+
 function renderControls(){
   radios("sel-vuelo", "vuelo", Object.entries(VUELOS).map(([id,v]) => ({id, t:v.t, s:v.s})));
   radios("sel-noches", "noches", [{id:5,t:"5 noches",s:"6 días"},{id:4,t:"4 noches",s:"5 días"}]);
-
-  const sel = document.getElementById("sel-hotel");
-  sel.innerHTML = HOTELES.map(h => `<option value="${h.id}" ${state.hotel===h.id?"selected":""}>${h.nombre}${h.adultos?" ★":""}${h.recomendado?" — Recomendado":""}</option>`).join("");
-  sel.onchange = () => { state.hotel = sel.value; renderAll(); };
+  renderHotelPicker();
 }
+
+(() => {
+  const hsel = document.getElementById("hsel");
+  const btn = document.getElementById("hsel-btn");
+  btn.addEventListener("click", () => {
+    const open = hsel.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  addEventListener("click", e => { if (!hsel.contains(e.target)) closeHsel(); });
+  addEventListener("keydown", e => { if (e.key === "Escape") closeHsel(); });
+})();
 
 const RESERVA_PCT = 0.22; // solo para esta cotización — Bayron lo indica caso a caso
 
