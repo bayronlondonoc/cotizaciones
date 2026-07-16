@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Punta Cana para Mónica · Cotización Raíces</title>
+<title>Cotización para nuestra cliente especial, Mónica Quintero · Raíces</title>
 <meta name="description" content="Plan de 5 noches y 6 días (o 4 noches y 5 días) en Punta Cana, República Dominicana, para 6 adultos. Finales de enero de 2027.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="assets/marca/favicon.png">
-<meta property="og:title" content="Punta Cana para Mónica · Cotización Raíces">
-<meta property="og:description" content="5N/6D o 4N/5D en Punta Cana · 6 adultos · Enero 2027">
-<meta property="og:image" content="assets/destinos/hero.jpg">
+<meta property="og:title" content="Cotización para nuestra cliente especial, Mónica Quintero · Raíces">
+<meta property="og:description" content="Punta Cana, República Dominicana · 6 adultos · Enero 2027">
+<meta property="og:image" content="https://bayronlondonoc.github.io/cotizaciones/monica-quintero/assets/destinos/hero.jpg">
+<meta property="og:url" content="https://bayronlondonoc.github.io/cotizaciones/monica-quintero/">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -95,12 +97,15 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .flight-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:20px}
 .flight-top .route{font-family:var(--font-display);font-size:20px;color:var(--tierra);text-transform:uppercase}
 .flight-top .when{font-size:12px;color:var(--mute);letter-spacing:.03em}
-.leg{padding:12px 0;border-top:1px dashed var(--line)}
+.leg{padding:16px 0;border-top:1px dashed var(--line)}
 .leg:first-of-type{border-top:0}
+.leg-date{font-family:var(--font-display);font-size:16px;color:var(--tierra);text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+.leg-dir{font-size:11px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-bottom:12px}
 .leg-row{display:grid;grid-template-columns:auto minmax(40px,1fr) auto;gap:14px;align-items:center}
-.leg-label{margin-top:6px;text-align:center;font-size:10.5px;color:var(--mute);letter-spacing:.04em}
+.leg-label{margin-top:8px;text-align:center;font-size:10.5px;color:var(--mute);letter-spacing:.04em}
+.leg-label.big{font-family:var(--font-display);font-size:17px;color:var(--oliva-dark);text-transform:uppercase;letter-spacing:.03em;margin-top:12px}
 .tm{font-family:var(--font-display);font-size:22px;color:var(--ink);line-height:1}
-.tm span{display:block;font-family:var(--font-body);font-size:11px;letter-spacing:.12em;color:var(--mute);font-weight:400;margin-top:5px}
+.tm span{display:block;font-family:var(--font-body);font-size:11.5px;letter-spacing:.04em;color:var(--mute);font-weight:400;margin-top:5px}
 .tm.r{text-align:right}
 .line{position:relative;height:1px;background:var(--line);margin:0 4px}
 .line .dot{position:absolute;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--oliva)}
@@ -191,11 +196,16 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .hsel-list li{padding:11px 12px;border-radius:8px;font-size:14px;line-height:1.35;color:var(--tierra);cursor:pointer}
 .hsel-list li:hover,.hsel-list li.active{background:rgba(104,54,44,.16)}
 .q-flag{display:inline-block;margin-top:8px;font-size:11.5px;color:rgba(230,202,178,.75)}
+.disc-banner{background:var(--atardecer);color:#fff;font-family:var(--font-display);font-size:15px;letter-spacing:.02em;text-transform:uppercase;text-align:center;padding:12px 16px;border-radius:12px 12px 0 0;box-shadow:0 6px 16px rgba(156,43,13,.35);position:relative;z-index:1}
 .q-total{padding:28px 30px;border-radius:var(--radius);background:var(--atardecer);color:#fff}
+.disc-banner + .q-total{border-radius:0 0 var(--radius) var(--radius);margin-top:-1px}
 .q-total .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
 .q-total .big{font-family:var(--font-display);font-size:clamp(40px,5.6vw,58px);line-height:1;margin:8px 0 4px}
+.q-total .big.cop{font-size:clamp(28px,3.6vw,38px)}
 .q-total .sm{font-size:13px;opacity:.9}
 .q-total hr{border:0;border-top:1px solid rgba(255,255,255,.24);margin:16px 0}
+.usd-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.old-price{font-family:var(--font-display);font-size:22px;opacity:.55;font-weight:400;margin-bottom:4px}
 .q-note{font-size:12px;color:rgba(230,202,178,.6);margin-top:18px;line-height:1.6}
 .q-perk{margin-top:10px;background:rgba(230,202,178,.14);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--arena);line-height:1.5}
 .disc-row{display:flex;align-items:baseline;gap:8px;font-family:var(--font-display);margin-bottom:4px}
@@ -309,7 +319,7 @@ footer p{margin:0 0 8px;line-height:1.7}
 <header class="hero" id="top">
   <img class="bg" src="assets/destinos/hero.jpg" alt="Playa de Punta Cana, República Dominicana">
   <div class="hero-in">
-    <div class="kicker">Preparado para Mónica y su grupo</div>
+    <div class="kicker">Para nuestra cliente especial, Mónica y su grupo</div>
     <h1>Punta Cana,<br>todo incluido</h1>
     <p class="sub">Dieciocho hoteles para elegir, cuatro formas de volar y dos duraciones de viaje — arme el plan que más le sirva a su grupo, y el total se ajusta solo.</p>
     <div class="hero-meta">
@@ -335,85 +345,101 @@ footer p{margin:0 0 8px;line-height:1.7}
       <div class="flight">
         <div class="flight-top"><div class="route">Wingo</div><div class="when">Tarifa Go Basic</div></div>
         <div class="leg">
+          <div class="leg-date">Jueves 21 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de ida</div>
           <div class="leg-row">
-            <div class="tm">11:09 am<span>MDE · jue 21 ene</span></div>
+            <div class="tm">11:09 am<span>Medellín</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">2:46 pm<span>PUJ</span></div>
+            <div class="tm r">2:46 pm<span>Punta Cana</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 37 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
         <div class="leg">
+          <div class="leg-date">Martes 26 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de regreso</div>
           <div class="leg-row">
-            <div class="tm">1:44 pm<span>PUJ · mar 26 ene</span></div>
+            <div class="tm">1:44 pm<span>Punta Cana</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">3:21 pm<span>MDE</span></div>
+            <div class="tm r">3:21 pm<span>Medellín</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 37 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="flight-foot"><span><b>5 noches</b></span><span>Vuelos P5 7436 / P5 7437</span></div>
+        <div class="flight-foot"><span><b>6 días</b></span></div>
       </div>
 
       <div class="flight">
         <div class="flight-top"><div class="route">Arajet</div><div class="when">Tarifa Basic</div></div>
         <div class="leg">
+          <div class="leg-date">Martes 26 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de ida</div>
           <div class="leg-row">
-            <div class="tm">2:05 pm<span>MDE · mar 26 ene</span></div>
+            <div class="tm">2:05 pm<span>Medellín</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">5:55 pm<span>PUJ</span></div>
+            <div class="tm r">5:55 pm<span>Punta Cana</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 50 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
         <div class="leg">
+          <div class="leg-date">Domingo 31 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de regreso</div>
           <div class="leg-row">
-            <div class="tm">10:54 am<span>PUJ · dom 31 ene</span></div>
+            <div class="tm">10:54 am<span>Punta Cana</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">12:34 pm<span>MDE</span></div>
+            <div class="tm r">12:34 pm<span>Medellín</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 40 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="flight-foot"><span><b>5 noches</b></span><span>Vuelos DM1733 / DM1732</span></div>
+        <div class="flight-foot"><span><b>6 días</b></span></div>
       </div>
 
       <div class="flight">
         <div class="flight-top"><div class="route">JetSmart</div><div class="when">Tarifa Basic</div></div>
         <div class="leg">
+          <div class="leg-date">Lunes 25 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de ida</div>
           <div class="leg-row">
-            <div class="tm">9:15 am<span>MDE · lun 25 ene</span></div>
+            <div class="tm">9:15 am<span>Medellín</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">12:55 pm<span>PUJ</span></div>
+            <div class="tm r">12:55 pm<span>Punta Cana</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 40 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
         <div class="leg">
+          <div class="leg-date">Sábado 30 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de regreso</div>
           <div class="leg-row">
-            <div class="tm">1:45 pm<span>PUJ · sáb 30 ene</span></div>
+            <div class="tm">1:45 pm<span>Punta Cana</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">3:26 pm<span>MDE</span></div>
+            <div class="tm r">3:26 pm<span>Medellín</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 41 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="flight-foot"><span><b>5 noches</b></span><span>Valor convertido de pesos a la TRM del día</span></div>
+        <div class="flight-foot"><span><b>6 días</b></span><span>Valor convertido de pesos a la TRM del día</span></div>
       </div>
 
       <div class="flight">
         <div class="flight-top"><div class="route">Avianca</div><div class="when">Tarifa Light</div></div>
         <div class="leg">
+          <div class="leg-date">Lunes 25 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de ida</div>
           <div class="leg-row">
-            <div class="tm">8:55 am<span>MDE · lun 25 ene</span></div>
+            <div class="tm">8:55 am<span>Medellín</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">12:35 pm<span>PUJ</span></div>
+            <div class="tm r">12:35 pm<span>Punta Cana</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 40 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
         <div class="leg">
+          <div class="leg-date">Sábado 30 de enero de 2027</div>
+          <div class="leg-dir">Horario vuelo de regreso</div>
           <div class="leg-row">
-            <div class="tm">1:45 pm<span>PUJ · sáb 30 ene</span></div>
+            <div class="tm">1:45 pm<span>Punta Cana</span></div>
             <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-            <div class="tm r">3:20 pm<span>MDE</span></div>
+            <div class="tm r">3:20 pm<span>Medellín</span></div>
           </div>
-          <div class="leg-label">Directo · 2 h 35 m</div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="flight-foot"><span><b>5 noches</b></span><span>Valor convertido de pesos a la TRM del día</span></div>
+        <div class="flight-foot"><span><b>6 días</b></span><span>Valor convertido de pesos a la TRM del día</span></div>
       </div>
     </div>
 
@@ -449,15 +475,15 @@ footer p{margin:0 0 8px;line-height:1.7}
     <div class="q-grid">
       <div class="q-panel">
         <div class="q-sel">
-          <label for="sel-noches">Duración</label>
+          <label for="sel-noches">Selecciona duración del viaje</label>
           <div class="q-opts" id="sel-noches" role="radiogroup" aria-label="Duración"></div>
         </div>
         <div class="q-sel">
-          <label for="sel-vuelo">Aerolínea</label>
+          <label for="sel-vuelo">Selecciona aerolínea</label>
           <div class="q-opts" id="sel-vuelo" role="radiogroup" aria-label="Aerolínea"></div>
         </div>
         <div class="q-sel">
-          <label id="hotel-label">Hotel</label>
+          <label id="hotel-label">Selecciona el hotel</label>
           <div class="hsel" id="hsel">
             <button type="button" class="hsel-btn" id="hsel-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="hotel-label">
               <span id="hsel-current">—</span>
@@ -471,12 +497,20 @@ footer p{margin:0 0 8px;line-height:1.7}
       </div>
 
       <div>
+        <div class="disc-banner" id="disc-banner" style="display:none">🎉 <span id="disc-banner-txt">5% de descuento ya aplicado</span></div>
         <div class="q-total">
           <div class="lbl">Valor total por persona</div>
-          <div class="big" id="t-pax">—</div>
+          <div class="usd-row">
+            <div class="big" id="t-pax">—</div>
+            <s class="old-price" id="t-pax-old" style="display:none"></s>
+          </div>
           <div class="sm">USD · vuelo + hotel, todo incluido</div>
+          <hr>
+          <div class="lbl">Equivalente en pesos colombianos</div>
+          <div class="big cop" id="t-cop">—</div>
+          <div class="sm">COP · TRM del día $3.193,91</div>
         </div>
-        <p class="q-note">Incluye el tiquete aéreo ida y vuelta, el alojamiento todo incluido en el hotel elegido, y el traslado aeropuerto ⇄ hotel en bus turístico de lujo. Valores en dólares, sujetos a disponibilidad al momento de confirmar.</p>
+        <p class="q-note">Incluye el tiquete aéreo ida y vuelta, el alojamiento todo incluido en el hotel elegido, y el traslado aeropuerto ⇄ hotel en bus turístico de lujo. Valores sujetos a disponibilidad al momento de confirmar.</p>
       </div>
     </div>
   </div>
@@ -834,6 +868,8 @@ function renderControls(){
 
 const RESERVA_PCT = 0.22; // solo para esta cotización — Bayron lo indica caso a caso
 
+const TRM = 3193.91;
+
 function renderQuote(){
   const v = VUELOS[state.vuelo];
   const h = HOTELES.find(x => x.id === state.hotel);
@@ -842,17 +878,26 @@ function renderQuote(){
   const total = v.p + hp;
 
   document.getElementById("t-pax").textContent = money(total);
+  document.getElementById("t-cop").textContent = money(total * TRM) + " COP";
   document.getElementById("hotel-flag").textContent = h.adultos ? "★ Hotel solo para adultos" : "";
 
   const perkEl = document.getElementById("q-perk");
+  const bannerEl = document.getElementById("disc-banner");
+  const oldPriceEl = document.getElementById("t-pax-old");
   if (h.descuento) {
     perkEl.style.display = "block";
     const note = h.transporte
       ? "5% de descuento y transporte privado aeropuerto ⇄ hotel incluidos, sujeto a disponibilidad al reservar."
       : "5% de descuento incluido.";
     perkEl.innerHTML = `<div class="disc-row"><s>${money(hpOrig)}</s><b>${money(hp)}</b><span>por persona</span></div><div class="disc-note">${note}</div>`;
+    bannerEl.style.display = "block";
+    document.getElementById("disc-banner-txt").textContent = h.transporte ? "5% de descuento + transporte privado ya aplicados" : "5% de descuento ya aplicado";
+    oldPriceEl.style.display = "inline";
+    oldPriceEl.textContent = money(v.p + hpOrig);
   } else {
     perkEl.style.display = "none";
+    bannerEl.style.display = "none";
+    oldPriceEl.style.display = "none";
   }
 
   const reserva = v.p + hp * RESERVA_PCT;
