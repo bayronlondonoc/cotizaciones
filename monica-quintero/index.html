@@ -45,7 +45,7 @@ p{margin:0 0 1em}
 .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,228,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:center;gap:38px;height:78px}
 .nav img{height:38px;width:auto}
-.nav-links{display:flex;gap:26px;font-size:14px;font-weight:400;letter-spacing:.04em}
+.nav-links{display:flex;gap:26px;font-size:15px;font-weight:400;letter-spacing:.04em}
 .nav-links a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1.5px solid transparent;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--atardecer);border-bottom-color:var(--atardecer)}
 .nav-burger{display:none}
@@ -139,6 +139,7 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .card-b h3{font-size:19px;margin-bottom:4px;line-height:1.1}
 .chain{color:var(--mute);font-size:11.5px;letter-spacing:.03em;text-transform:none;display:block;margin-bottom:10px}
 .canc{font-size:11.5px;padding:7px 11px;border-radius:10px;margin-bottom:12px;line-height:1.4;background:rgba(125,133,97,.14);color:var(--oliva-dark)}
+.hdesc{font-size:12.5px;color:var(--ink-soft);line-height:1.65;margin:0 0 12px}
 .facts{list-style:none;padding:0;margin:0 0 14px;font-size:12.5px;color:var(--ink-soft)}
 .facts li{padding:5px 0;border-top:1px solid var(--line);display:flex;gap:8px}
 .facts li b{font-weight:500;color:var(--tierra);min-width:64px;flex:none}
@@ -196,24 +197,25 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .hsel-list li{padding:11px 12px;border-radius:8px;font-size:14px;line-height:1.35;color:var(--tierra);cursor:pointer}
 .hsel-list li:hover,.hsel-list li.active{background:rgba(104,54,44,.16)}
 .q-flag{display:inline-block;margin-top:8px;font-size:11.5px;color:rgba(230,202,178,.75)}
-.disc-banner{background:var(--atardecer);color:#fff;font-family:var(--font-display);font-size:15px;letter-spacing:.02em;text-transform:uppercase;text-align:center;padding:12px 16px;border-radius:12px 12px 0 0;box-shadow:0 6px 16px rgba(156,43,13,.35);position:relative;z-index:1}
 .q-total{padding:28px 30px;border-radius:var(--radius);background:var(--atardecer);color:#fff}
-.disc-banner + .q-total{border-radius:0 0 var(--radius) var(--radius);margin-top:-1px}
 .q-total .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
-.q-total .big{font-family:var(--font-display);font-size:clamp(40px,5.6vw,58px);line-height:1;margin:8px 0 4px}
-.q-total .big.cop{font-size:clamp(28px,3.6vw,38px)}
-.q-total .half{font-family:var(--font-display);font-size:clamp(21px,2.8vw,29px);line-height:1;margin:8px 0 4px}
-.q-total .sm{font-size:13px;opacity:.9}
+.q-total .big{font-family:var(--font-display);font-size:clamp(34px,4.4vw,46px);line-height:1;margin:8px 0 4px}
+.q-total .big.cop{font-size:clamp(24px,3vw,32px)}
+.q-total .half{font-family:var(--font-display);font-size:clamp(20px,2.6vw,27px);line-height:1;margin:8px 0 4px}
+.q-total .sm{font-size:12.5px;opacity:.9}
 .q-total hr{border:0;border-top:1px solid rgba(255,255,255,.24);margin:16px 0}
-.usd-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.old-price{font-family:var(--font-display);font-size:22px;opacity:.55;font-weight:400;margin-bottom:4px}
+.qt-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:600px){.qt-grid{grid-template-columns:1fr}}
+.usd-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.old-price{font-family:var(--font-display);font-size:20px;opacity:.55;font-weight:400;margin-bottom:4px}
 .q-note{font-size:12px;color:rgba(230,202,178,.6);margin-top:18px;line-height:1.6}
 .q-perk{margin-top:10px;background:rgba(230,202,178,.14);border-radius:10px;padding:12px 14px;font-size:12px;color:var(--arena);line-height:1.5}
 .disc-row{display:flex;align-items:baseline;gap:8px;font-family:var(--font-display);margin-bottom:4px}
 .disc-row s{font-size:17px;opacity:.55;font-weight:400}
 .disc-row b{font-size:22px;color:#fff;font-weight:400}
 .disc-row span{font-family:var(--font-body);font-size:11px;opacity:.7;text-transform:none;letter-spacing:0}
-.disc-note{font-size:11.5px;opacity:.85}
+.disc-note{font-size:12px;opacity:.9;line-height:1.55}
+.disc-note b{color:#fff;font-weight:600}
 
 /* ---------- Reserva ---------- */
 .pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:36px}
@@ -498,24 +500,28 @@ footer p{margin:0 0 8px;line-height:1.7}
       </div>
 
       <div>
-        <div class="disc-banner" id="disc-banner" style="display:none">🎉 <span id="disc-banner-txt">5% de descuento ya aplicado</span></div>
         <div class="q-total">
-          <div class="lbl">Valor total por persona</div>
-          <div class="usd-row">
-            <div class="big" id="t-pax">—</div>
-            <s class="old-price" id="t-pax-old" style="display:none"></s>
+          <div class="qt-grid">
+            <div>
+              <div class="lbl">Valor total por persona</div>
+              <div class="usd-row">
+                <div class="big" id="t-pax">—</div>
+                <s class="old-price" id="t-pax-old" style="display:none"></s>
+              </div>
+              <div class="sm">USD · vuelo + hotel, todo incluido</div>
+            </div>
+            <div>
+              <div class="lbl">Valor por persona en pesos colombianos</div>
+              <div class="big cop" id="t-cop">—</div>
+              <div class="sm">COP · TRM del día $3.193,91</div>
+            </div>
           </div>
-          <div class="sm">USD · vuelo + hotel, todo incluido</div>
-          <hr>
-          <div class="lbl">Equivalente en pesos colombianos</div>
-          <div class="big cop" id="t-cop">—</div>
-          <div class="sm">COP · TRM del día $3.193,91</div>
           <hr>
           <div class="lbl">Valor total · 6 adultos</div>
-          <div class="half" id="t-all">—</div>
-          <div class="sm">USD</div>
-          <div class="half" id="t-all-cop">—</div>
-          <div class="sm">COP</div>
+          <div class="qt-grid">
+            <div class="usd-row"><div class="half" id="t-all">—</div><span class="sm">USD</span></div>
+            <div class="usd-row"><div class="half" id="t-all-cop">—</div><span class="sm">COP</span></div>
+          </div>
         </div>
         <p class="q-note">Incluye el tiquete aéreo ida y vuelta, el alojamiento todo incluido en el hotel elegido, y el traslado aeropuerto ⇄ hotel en bus turístico de lujo. Valores sujetos a disponibilidad al momento de confirmar.</p>
       </div>
@@ -687,25 +693,44 @@ const money = n => "$" + Math.round(n).toLocaleString("es-CO");
    4N/5D es (5N ÷ 5) × 4. Los hoteles con "descuento" ya tienen el 5% aplicado.
    Se publican ya sumados a propósito: el cliente no ve el valor del hotel ni del vuelo por separado. */
 const HOTELES = [
-  { id:"occidental-caribe", nombre:"Occidental Caribe All Inclusive", cadena:"Barceló Hoteles · 4★", zona:"Bávaro", hab:"Double", cancela:"11 de enero de 2027", p5:686, p4:549, fotos:13 },
-  { id:"occidental-punta-cana", nombre:"Occidental Punta Cana", cadena:"Barceló Hoteles · 5★ Luxury Collection", zona:"Bávaro", hab:"Superior", cancela:"8 de enero de 2027", p5:777, p4:622, fotos:14 },
-  { id:"bahia-principe-explore-turquesa", nombre:"Bahía Príncipe Explore Turquesa", cadena:"Bahia Principe · 5★ Luxury Collection", zona:"Bávaro", hab:"Junior Suite Standard", cancela:"21 de enero de 2027", p5:777, p4:622, fotosList:["1.jpg","2.webp","3.webp","4.webp","5.webp","6.webp","7.webp","8.webp","9.webp","10.webp","11.webp","12.webp"] },
-  { id:"serenade", nombre:"Serenade Punta Cana Beach & Spa", cadena:"Best Hotels · 5★ Luxury Collection", zona:"Cabeza de Toro", hab:"Luxury Tropical Garden", cancela:"18 de enero de 2027", p5:789, p4:631, video:"aKYJn1WrKcM" },
-  { id:"vista-sol", nombre:"Vista Sol Punta Cana Beach Resort & Spa", cadena:"4★ · Más vendido", zona:"Bávaro", hab:"Comfort (2 adultos)", cancela:"10 de enero de 2027", p5:870, p4:696, video:"LRXGQcrqMtE" },
-  { id:"royalton-splash", nombre:"Royalton Splash Punta Cana", cadena:"4★", zona:"Punta Cana", hab:"Luxury Room", cancela:"23 de enero de 2027", p5:885, p4:708, video:"qOf7TzpeFGc" },
-  { id:"bahia-principe-explore-punta-cana", nombre:"Bahía Príncipe Explore Punta Cana", cadena:"Bahia Principe · 5★ Luxury Collection", zona:"Bávaro", hab:"Junior Suite Standard", cancela:"21 de enero de 2027", p5:947, p4:758, fotos:12, ext:"webp" },
-  { id:"grand-sirenis", nombre:"Grand Sirenis Punta Cana Resort", cadena:"All Inclusive", zona:"Uvero Alto", hab:"Double Room", cancela:"22 de enero de 2027", p5:998, p4:798, video:"lupJTsKjDrU" },
-  { id:"paradisus", nombre:"Paradisus Grand Cana", cadena:"Meliá · All Suites", zona:"Bávaro", hab:"Suite", cancela:"17 de enero de 2027", p5:1029, p4:823, fotos:12 },
-  { id:"melia-caribe-beach", nombre:"Meliá Caribe Beach", cadena:"All Inclusive", zona:"Bávaro", hab:"Family Room Tropical", cancela:"17 de enero de 2027", p5:1045, p4:836, fotos:12 },
-  { id:"royalton-chic", nombre:"Royalton CHIC Punta Cana", cadena:"All-Inclusive Resort", zona:"Uvero Alto", hab:"Luxury Room", cancela:"23 de enero de 2027", p5:1055, p4:844, adultos:true, fotos:12 },
-  { id:"iberostar-waves", nombre:"Iberostar Waves Dominicana", cadena:"All Inclusive", zona:"Bávaro", hab:"Doble Standard", cancela:"21 de enero de 2027", p5:1080, p4:864, fotos:14 },
-  { id:"ocean-el-faro", nombre:"Ocean El Faro – El Beso", cadena:"H10 Hotels", zona:"Uvero Alto", hab:"Junior Suite Vistas al Mar", cancela:"21 de enero de 2027", p5:1115, p4:892, adultos:true, video:"VjCfVJQOcQQ" },
-  { id:"dreams-flora", nombre:"Dreams Flora Resort & Spa", cadena:"5★ · Más vendido", zona:"Cabeza de Toro", hab:"Junior Suite Tropical", cancela:"17 de enero de 2027", p5:1075, p4:860, p5orig:1132, p4orig:906, descuento:true, fotosList:["1.webp","2.webp","3.webp","4.webp","5.jpg","6.jpg","7.webp","8.webp","9.webp","10.webp","11.webp","12.webp"] },
-  { id:"grand-palladium-palace", nombre:"Grand Palladium Palace Resort, Spa & Casino", cadena:"5★ · Hoteles Preferentes", zona:"Bávaro", hab:"Deluxe Beachside", cancela:"14 de enero de 2027", p5:1102, p4:882, p5orig:1160, p4orig:928, descuento:true, transporte:true, fotos:14 },
-  { id:"trs-turquesa", nombre:"TRS Turquesa Hotel", cadena:"5★ · Hoteles Preferentes", zona:"Bávaro", hab:"Garden View Pool", cancela:"14 de enero de 2027", p5:1186, p4:949, p5orig:1248, p4orig:998, adultos:true, descuento:true, recomendado:true, fotos:13 },
-  { id:"riu-palace-punta-cana", nombre:"Riu Palace Punta Cana", cadena:"5★ · Más vendido", zona:"Bávaro", hab:"Jr. Suite Standard", cancela:"21 de enero de 2027", p5:1207, p4:966, p5orig:1270, p4orig:1016, descuento:true, transporte:true, video:"wQTRBGFqE6M" },
-  { id:"riu-republica", nombre:"Riu República", cadena:"5★ · Más vendido", zona:"Punta Cana", hab:"Doble Standard", cancela:"21 de enero de 2027", p5:1041, p4:833, p5orig:1096, p4orig:877, adultos:true, descuento:true, transporte:true, video:"Izs8DafmzEA" },
-  { id:"royalton-hideaway", nombre:"Royalton Hideaway Punta Cana", cadena:"4.5★", zona:"Punta Cana", hab:"Luxury Room", cancela:"23 de enero de 2027", p5:1233, p4:986, fotos:12 }
+  { id:"occidental-caribe", nombre:"Occidental Caribe All Inclusive", cadena:"Barceló Hoteles · 4★", zona:"Bávaro", hab:"Double", cancela:"11 de enero de 2027", p5:686, p4:549, fotos:13,
+    desc:"Todo incluido de Barceló en Bávaro: piscinas amplias, spa, gimnasio y restaurantes buffet y de especialidades, con acceso directo a la playa." },
+  { id:"occidental-punta-cana", nombre:"Occidental Punta Cana", cadena:"Barceló Hoteles · 5★ Luxury Collection", zona:"Bávaro", hab:"Superior", cancela:"8 de enero de 2027", p5:777, p4:622, fotos:14,
+    desc:"5 estrellas de Barceló sobre Playa Bávaro, con gran zona de piscinas, restaurantes de especialidades y ambiente cómodo para familias y parejas." },
+  { id:"bahia-principe-explore-turquesa", nombre:"Bahía Príncipe Explore Turquesa", cadena:"Bahia Principe · 5★ Luxury Collection", zona:"Bávaro", hab:"Junior Suite Standard", cancela:"21 de enero de 2027", p5:777, p4:622, fotosList:["1.jpg","2.webp","3.webp","4.webp","5.webp","6.webp","7.webp","8.webp","9.webp","10.webp","11.webp","12.webp"],
+    desc:"Pensado para familias que quieren diversión sin complicarse: Bahia Scouts Water Park dentro del resort, concepto de villas en entorno tropical y acceso incluido a los restaurantes a la carta del complejo (excepto buffets), ideal para variar cada noche. Entretenimiento diurno y nocturno, espacios para niños y teens, discoteca y spa." },
+  { id:"serenade", nombre:"Serenade Punta Cana Beach & Spa", cadena:"Best Hotels · 5★ Luxury Collection", zona:"Cabeza de Toro", hab:"Luxury Tropical Garden", cancela:"18 de enero de 2027", p5:789, p4:631, video:"aKYJn1WrKcM",
+    desc:"Diseño contemporáneo con amplios espacios abiertos y ambiente tranquilo, ideal para familias y parejas. 7 restaurantes y 6 bares — destacan el buffet The Win, el italiano Trattoria y el Teppanyaki con show en vivo durante la cena. Kids Club, parque infantil, spa, gimnasio y entretenimiento nocturno." },
+  { id:"vista-sol", nombre:"Vista Sol Punta Cana Beach Resort & Spa", cadena:"4★ · Más vendido", zona:"Bávaro", hab:"Comfort (2 adultos)", cancela:"10 de enero de 2027", p5:870, p4:696, video:"LRXGQcrqMtE",
+    desc:"Experiencia caribeña auténtica con acceso directo a la playa: 6 restaurantes de cocina internacional y gourmet, un food truck frente al mar y pizzería/crepería — Mamma Mia, El Mariachi y el Teppanyaki & Sushi Bar son los mejores del hotel. 3 piscinas, 7 bares y espectáculos nocturnos en la playa." },
+  { id:"royalton-splash", nombre:"Royalton Splash Punta Cana", cadena:"4★", zona:"Punta Cana", hab:"Luxury Room", cancela:"23 de enero de 2027", p5:885, p4:708, video:"qOf7TzpeFGc",
+    desc:"El destino perfecto para familias: parque acuático de los más grandes del Caribe, room service 24/7 y acceso a las instalaciones del Royalton Punta Cana (casino, spa y más restaurantes). 6 restaurantes y 9 bares — Under the Sea con temática marina para los niños y Bella Cucina italiano. Galardonado con 16 premios entre los mejores de Punta Cana." },
+  { id:"bahia-principe-explore-punta-cana", nombre:"Bahía Príncipe Explore Punta Cana", cadena:"Bahia Principe · 5★ Luxury Collection", zona:"Bávaro", hab:"Junior Suite Standard", cancela:"21 de enero de 2027", p5:947, p4:758, fotos:12, ext:"webp",
+    desc:"Parque acuático para niños, programas de entretenimiento para adultos y niños, y cenas a la carta con reserva que permiten estructurar noches distintas sin depender del buffet. 7 restaurantes y 8 bares dentro del resort." },
+  { id:"grand-sirenis", nombre:"Grand Sirenis Punta Cana Resort", cadena:"All Inclusive", zona:"Uvero Alto", hab:"Double Room", cancela:"22 de enero de 2027", p5:998, p4:798, video:"lupJTsKjDrU",
+    desc:"Frente al mar en Uvero Alto, ideal para familias, parejas y amigos: parque acuático de 12.000 m² con toboganes y zona infantil, 2 piscinas grandes y 2 para niños. 8 restaurantes temáticos (italiano, japonés, tex-mex, brasileño) y 13 bares con discoteca y casino. Kayak, snorkel, mini-golf y club infantil." },
+  { id:"paradisus", nombre:"Paradisus Grand Cana", cadena:"Meliá · All Suites", zona:"Bávaro", hab:"Suite", cancela:"17 de enero de 2027", p5:1029, p4:823, fotos:12,
+    desc:"Concepto all-suites de Meliá en Bávaro: suites amplias con sala de estar, piscinas tipo resort con cabañas y gastronomía de autor dentro del todo incluido." },
+  { id:"melia-caribe-beach", nombre:"Meliá Caribe Beach", cadena:"All Inclusive", zona:"Bávaro", hab:"Family Room Tropical", cancela:"17 de enero de 2027", p5:1045, p4:836, fotos:12,
+    desc:"Resort familiar de Meliá sobre Playa Bávaro, con parque acuático para niños, amplia oferta de restaurantes buffet y de especialidades, y habitaciones familiares pensadas para viajar con niños." },
+  { id:"royalton-chic", nombre:"Royalton CHIC Punta Cana", cadena:"All-Inclusive Resort", zona:"Uvero Alto", hab:"Luxury Room", cancela:"23 de enero de 2027", p5:1055, p4:844, adultos:true, fotos:12,
+    desc:"Solo para adultos en Uvero Alto, con ambiente social y moderno: piscinas con música, gastronomía a la carta, entretenimiento nocturno y el sello CHIC de Royalton para un viaje con más movimiento." },
+  { id:"iberostar-waves", nombre:"Iberostar Waves Dominicana", cadena:"All Inclusive", zona:"Bávaro", hab:"Doble Standard", cancela:"21 de enero de 2027", p5:1080, p4:864, fotos:14,
+    desc:"Frente a Playa Bávaro, con piscinas de actividades, entretenimiento diurno y nocturno, deportes acuáticos y gastronomía variada dentro del todo incluido de Iberostar." },
+  { id:"ocean-el-faro", nombre:"Ocean El Faro – El Beso", cadena:"H10 Hotels", zona:"Uvero Alto", hab:"Junior Suite Vistas al Mar", cancela:"21 de enero de 2027", p5:1115, p4:892, adultos:true, video:"VjCfVJQOcQQ",
+    desc:"Arquitectura estilo colonial con el icónico faro con mirador panorámico, río lento, parque acuático y bowling. El Beso es la zona solo para adultos del resort. 10 restaurantes y 13 bares — Sakura de teppanyaki y sushi, Blue Moon de cocina de autor y Route 66 de estilo americano." },
+  { id:"dreams-flora", nombre:"Dreams Flora Resort & Spa", cadena:"5★ · Más vendido", zona:"Cabeza de Toro", hab:"Junior Suite Tropical", cancela:"17 de enero de 2027", p5:1075, p4:860, p5orig:1132, p4orig:906, descuento:true, fotosList:["1.webp","2.webp","3.webp","4.webp","5.jpg","6.jpg","7.webp","8.webp","9.webp","10.webp","11.webp","12.webp"],
+    desc:"5 estrellas en Cabeza de Toro con parque acuático, restaurantes de especialidades sin necesidad de reserva y el concepto Unlimited-Luxury de la familia Dreams: todo incluido de categoría superior para familias y parejas." },
+  { id:"grand-palladium-palace", nombre:"Grand Palladium Palace Resort, Spa & Casino", cadena:"5★ · Hoteles Preferentes", zona:"Bávaro", hab:"Deluxe Beachside", cancela:"14 de enero de 2027", p5:1102, p4:882, p5orig:1160, p4orig:928, descuento:true, transporte:true, fotos:14,
+    desc:"Funciona como 3 hoteles en 1: al hospedarte aquí puedes usar también las instalaciones de los otros Grand Palladium del complejo. 1 kilómetro de playa, todo incluido 24 horas y mucha variedad real para elegir cada noche: 14 restaurantes y 21 bares — Sumptuori japonés con teppanyaki, Bhogali indio y El Dorado steakhouse frente a la playa." },
+  { id:"trs-turquesa", nombre:"TRS Turquesa Hotel", cadena:"5★ · Hoteles Preferentes", zona:"Bávaro", hab:"Garden View Pool", cancela:"14 de enero de 2027", p5:1186, p4:949, p5orig:1248, p4orig:998, adultos:true, descuento:true, recomendado:true, fotos:13,
+    desc:"La categoría más alta del complejo Palladium y mucho más privada: solo adultos, servicio de mayordomo incluido y acceso a las instalaciones de los 4 hoteles del resort. 4 restaurantes exclusivos — Helios beach club frente al mar, La Bohème francés y Kusko nikkei — más acceso a los 40+ restaurantes, bares y cafeterías del complejo, con prioridad para cenar." },
+  { id:"riu-palace-punta-cana", nombre:"Riu Palace Punta Cana", cadena:"5★ · Más vendido", zona:"Bávaro", hab:"Jr. Suite Standard", cancela:"21 de enero de 2027", p5:1207, p4:966, p5orig:1270, p4orig:1016, descuento:true, transporte:true, video:"wQTRBGFqE6M",
+    desc:"Todo incluido 24 horas con acceso a Splash Water World y el formato RIU Palace en Arena Gorda: playa, piscinas y un ambiente muy cómodo para familias y parejas. Buffet y restaurantes temáticos más 5 bares — destacan su cocina japonesa, el italiano y el steakhouse. Spa, gimnasio y entretenimiento nocturno." },
+  { id:"riu-republica", nombre:"Riu República", cadena:"5★ · Más vendido", zona:"Punta Cana", hab:"Doble Standard", cancela:"21 de enero de 2027", p5:1041, p4:833, p5orig:1096, p4orig:877, adultos:true, descuento:true, transporte:true, video:"Izs8DafmzEA",
+    desc:"Solo para adultos, pensado para un viaje con ambiente y movimiento: todo incluido 24 horas, acceso a Splash Water World y el sello RIU Party — playa, piscina y fiesta dentro del mismo complejo. 9 restaurantes y 8 bares — Kulinarium de cocina de autor, Quisqueya steakhouse con terraza y Kaori asiático." },
+  { id:"royalton-hideaway", nombre:"Royalton Hideaway Punta Cana", cadena:"4.5★", zona:"Punta Cana", hab:"Luxury Room", cancela:"23 de enero de 2027", p5:1233, p4:986, fotos:12,
+    desc:"La zona más exclusiva y tranquila del complejo Royalton: áreas y restaurantes propios estilo hideaway, con acceso al resto del resort — sus piscinas, casino y entretenimiento." }
 ];
 
 const VUELOS = {
@@ -755,6 +780,7 @@ function cardHTML(h){
       <h3>${h.nombre}</h3>
       <span class="chain">${h.cadena}</span>
       <div class="canc">✓ Cancelación gratuita hasta el ${h.cancela}</div>
+      ${h.desc ? `<p class="hdesc">${h.desc}</p>` : ""}
       <ul class="facts">
         <li><b>Zona</b><span>${h.zona}</span></li>
         <li><b>Habitación</b><span>${h.hab}</span></li>
@@ -856,27 +882,25 @@ function renderQuote(){
   const total = v.p + hp;
 
   document.getElementById("t-pax").textContent = money(total);
-  document.getElementById("t-cop").textContent = money(total * TRM) + " COP";
+  document.getElementById("t-cop").textContent = money(total * TRM);
   document.getElementById("t-all").textContent = money(total * PAX);
   document.getElementById("t-all-cop").textContent = money(total * PAX * TRM);
   document.getElementById("hotel-flag").textContent = h.adultos ? "★ Hotel solo para adultos" : "";
 
+  /* El aviso del 5% queda SIEMPRE visible bajo el selector: como invitación
+     cuando el hotel elegido no tiene descuento, y con el valor tachado cuando sí. */
   const perkEl = document.getElementById("q-perk");
-  const bannerEl = document.getElementById("disc-banner");
   const oldPriceEl = document.getElementById("t-pax-old");
+  perkEl.style.display = "block";
   if (h.descuento) {
-    perkEl.style.display = "block";
     const note = h.transporte
       ? "5% de descuento y transporte privado aeropuerto ⇄ hotel incluidos, sujeto a disponibilidad al reservar."
       : "5% de descuento incluido.";
     perkEl.innerHTML = `<div class="disc-row"><s>${money(hpOrig)}</s><b>${money(hp)}</b><span>por persona</span></div><div class="disc-note">${note}</div>`;
-    bannerEl.style.display = "block";
-    document.getElementById("disc-banner-txt").textContent = h.transporte ? "5% de descuento + transporte privado ya aplicados" : "5% de descuento ya aplicado";
     oldPriceEl.style.display = "inline";
     oldPriceEl.textContent = money(v.p + hpOrig);
   } else {
-    perkEl.style.display = "none";
-    bannerEl.style.display = "none";
+    perkEl.innerHTML = `<div class="disc-note">🎉 <b>5% de descuento</b> si eliges Dreams Flora, Grand Palladium Palace, TRS Turquesa, Riu Palace Punta Cana o Riu República — los Palladium y RIU incluyen además transporte privado aeropuerto ⇄ hotel, sujeto a disponibilidad al reservar.</div>`;
     oldPriceEl.style.display = "none";
   }
 
