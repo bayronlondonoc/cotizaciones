@@ -282,7 +282,7 @@ footer p{margin:0 0 8px;line-height:1.7}
     <div class="sec-head">
       <div class="eyebrow">Tiquete aéreo · Avianca</div>
       <h2>Directo, ida y regreso</h2>
-      <p>Vuelo directo Medellín–Cancún con Avianca. Eliges tus fechas de ida (19 al 25 de enero) y de regreso (26 de enero al 1 de febrero) más abajo, en <b>Tu inversión</b>; el valor se ajusta según el día y la tarifa que prefieras.</p>
+      <p>Vuelo directo Medellín–Cancún con Avianca. Es una estadía de 7 noches: eliges tu ventana de viaje (entre el 19 de enero y el 1 de febrero) y la tarifa más abajo, en <b>Tu inversión</b>; el valor se ajusta solo.</p>
     </div>
 
     <div class="flights">
@@ -385,13 +385,9 @@ footer p{margin:0 0 8px;line-height:1.7}
 
     <div class="q-panel">
       <div class="q-selgrid">
-        <div class="q-selgroup">
-          <label>Fecha de ida</label>
-          <div class="q-opts" id="sel-ida"></div>
-        </div>
-        <div class="q-selgroup">
-          <label>Fecha de regreso</label>
-          <div class="q-opts" id="sel-reg"></div>
+        <div class="q-selgroup" style="grid-column:1/-1">
+          <label>Ventana de viaje · 7 noches</label>
+          <div class="q-opts" id="sel-ventana"></div>
         </div>
         <div class="q-selgroup">
           <label>Tarifa aérea</label>
@@ -566,23 +562,14 @@ const DIV = 0.95;
 const money = n => "$" + Math.round(n).toLocaleString("es-CO");
 const usd = n => "US$" + Math.round(n).toLocaleString("es-CO");
 
-const IDA = [
-  {k:"19", label:"Mar 19 ene", day:19, light:891305},
-  {k:"20", label:"Mié 20 ene", day:20, light:891305},
-  {k:"21", label:"Jue 21 ene", day:21, light:891305},
-  {k:"22", label:"Vie 22 ene", day:22, light:891305},
-  {k:"23", label:"Sáb 23 ene", day:23, light:891305},
-  {k:"24", label:"Dom 24 ene", day:24, light:891305},
-  {k:"25", label:"Lun 25 ene", day:25, light:914875}
-];
-const REG = [
-  {k:"26", label:"Mar 26 ene", day:26, light:598835},
-  {k:"27", label:"Mié 27 ene", day:27, light:598835},
-  {k:"28", label:"Jue 28 ene", day:28, light:696805},
-  {k:"29", label:"Vie 29 ene", day:29, light:696805},
-  {k:"30", label:"Sáb 30 ene", day:30, light:723700},
-  {k:"31", label:"Dom 31 ene", day:31, light:723700},
-  {k:"1f", label:"Lun 01 feb", day:32, light:622510}
+const VENTANAS = [
+  {k:"19", rango:"19 al 26 de enero", ida:"mar 19 ene", reg:"mar 26 ene", idaLight:891305, regLight:598835},
+  {k:"20", rango:"20 al 27 de enero", ida:"mié 20 ene", reg:"mié 27 ene", idaLight:891305, regLight:598835},
+  {k:"21", rango:"21 al 28 de enero", ida:"jue 21 ene", reg:"jue 28 ene", idaLight:891305, regLight:696805},
+  {k:"22", rango:"22 al 29 de enero", ida:"vie 22 ene", reg:"vie 29 ene", idaLight:891305, regLight:696805},
+  {k:"23", rango:"23 al 30 de enero", ida:"sáb 23 ene", reg:"sáb 30 ene", idaLight:891305, regLight:723700},
+  {k:"24", rango:"24 al 31 de enero", ida:"dom 24 ene", reg:"dom 31 ene", idaLight:891305, regLight:723700},
+  {k:"25", rango:"25 de enero al 1 de febrero", ida:"lun 25 ene", reg:"lun 01 feb", idaLight:914875, regLight:622510}
 ];
 const CLASSIC_IDA = 202480, CLASSIC_REG = 211670;
 const TOUR = { adulto:909.7312, nino:682.2984 };
@@ -636,25 +623,24 @@ const TOURS = [
     food:"<b>Alimentación:</b> barra libre de bebidas a bordo y almuerzo buffet con bebidas ilimitadas en el club de playa." }
 ];
 
-const state = { ida:"22", reg:"29", fare:"light", hotel:"colonial" };
+const state = { ventana:"22", fare:"light", hotel:"colonial" };
 
 function fotoFiles(h){ return Array.from({length:h.fotos}, (_,i) => `assets/hoteles/${h.id}/${i+1}.jpg`); }
 
 /* ---------- vuelo / cálculo ---------- */
-function flightCOP(fare, idaK, regK){
-  const i = IDA.find(x=>x.k===idaK), r = REG.find(x=>x.k===regK);
-  let ida = i.light, reg = r.light;
+function flightCOP(fare, ventanaK){
+  const v = VENTANAS.find(x=>x.k===ventanaK);
+  let ida = v.idaLight, reg = v.regLight;
   if(fare==="classic"){ ida += CLASSIC_IDA; reg += CLASSIC_REG; }
-  return (ida + reg) / DIV;
+  return Math.round(((ida + reg) / DIV) / 100) * 100;   // tiquete +5% comisión, redondeado a $100
 }
 function calcPersona(pkey){
   const h = HOTELES.find(x=>x.id===state.hotel);
-  const vuelo = flightCOP(state.fare, state.ida, state.reg);
-  const hotelUSD = h.pp[pkey];
+  const vuelo = flightCOP(state.fare, state.ventana);
   const tourUSD = pkey==="adulto" ? TOUR.adulto : TOUR.nino;
-  const svc = (hotelUSD + tourUSD) * TRM;
-  const total = vuelo + svc;
-  const reserva = vuelo + 0.22*svc;
+  const svc = (h.pp[pkey] + tourUSD) * TRM;
+  const total = vuelo + Math.round(svc);
+  const reserva = vuelo + Math.round(0.22*svc);
   return { total, reserva, saldo: total-reserva, usdTotal: total/TRM };
 }
 
@@ -714,14 +700,12 @@ function pill(name, val, label, checked){
   return `<label class="q-opt"><input type="radio" name="${name}" value="${val}" ${checked?"checked":""}><span>${label}</span></label>`;
 }
 function renderControls(){
-  document.getElementById("sel-ida").innerHTML = IDA.map(o => pill("ida", o.k, o.label, state.ida===o.k)).join("");
-  document.getElementById("sel-reg").innerHTML = REG.map(o => pill("reg", o.k, o.label, state.reg===o.k)).join("");
+  document.getElementById("sel-ventana").innerHTML = VENTANAS.map(o => pill("ventana", o.k, o.rango, state.ventana===o.k)).join("");
   document.getElementById("sel-fare").innerHTML =
     pill("fare","light","<b>Light</b>", state.fare==="light") +
     pill("fare","classic","<b>Classic</b>", state.fare==="classic");
   document.getElementById("sel-hotel").innerHTML = HOTELES.map(h => pill("hotel", h.id, `<b>${h.nombre.replace("Hotel ","")}</b>`, state.hotel===h.id)).join("");
-  document.querySelectorAll('input[name="ida"]').forEach(r => r.addEventListener("change", () => { state.ida=r.value; renderQuote(); }));
-  document.querySelectorAll('input[name="reg"]').forEach(r => r.addEventListener("change", () => { state.reg=r.value; renderQuote(); }));
+  document.querySelectorAll('input[name="ventana"]').forEach(r => r.addEventListener("change", () => { state.ventana=r.value; renderQuote(); }));
   document.querySelectorAll('input[name="fare"]').forEach(r => r.addEventListener("change", () => { state.fare=r.value; renderQuote(); }));
   document.querySelectorAll('input[name="hotel"]').forEach(r => r.addEventListener("change", () => { state.hotel=r.value; renderQuote(); }));
 }
@@ -729,12 +713,11 @@ function renderControls(){
 /* ---------- render cotización ---------- */
 function renderQuote(){
   const h = HOTELES.find(x=>x.id===state.hotel);
-  const i = IDA.find(x=>x.k===state.ida), r = REG.find(x=>x.k===state.reg);
-  const noches = r.day - i.day;
+  const v = VENTANAS.find(x=>x.k===state.ventana);
   const fareLabel = state.fare==="classic" ? "Classic" : "Light";
 
   document.getElementById("q-resumen").innerHTML =
-    `Ida <b>${i.label.toLowerCase()}</b>, regreso <b>${r.label.toLowerCase()}</b> · ${noches} noche${noches===1?"":"s"} · tarifa <b>${fareLabel}</b> · <b>${h.nombre}</b>.`;
+    `Del <b>${v.rango}</b> de 2027 · 7 noches · ida ${v.ida}, regreso ${v.reg} · tarifa <b>${fareLabel}</b> · <b>${h.nombre}</b>.`;
 
   document.getElementById("inv-grid").innerHTML = PERSONAS.map(p => {
     const c = calcPersona(p.key);
@@ -759,7 +742,7 @@ function renderQuote(){
   }).join("\n");
   const msg =
     `Hola Raíces, soy Jahiyuri. Quiero reservar el plan a Playa del Carmen (Riviera Maya) de enero de 2027:\n\n` +
-    `• Vuelo Avianca directo Medellín–Cancún: ida ${i.label.toLowerCase()}, regreso ${r.label.toLowerCase()}, tarifa ${fareLabel}\n` +
+    `• Vuelo Avianca directo Medellín–Cancún: del ${v.rango} de 2027 (ida ${v.ida}, regreso ${v.reg}), 7 noches, tarifa ${fareLabel}\n` +
     `• Hotel: ${h.nombre}\n` +
     `• Incluye traslados y los 6 tours (Chichén Itzá, Xcaret Plus, Xel-Há, Xplor, Xoximilco e Isla Mujeres)\n\n` +
     `Valores por persona:\n${lineas}\n\n` +
