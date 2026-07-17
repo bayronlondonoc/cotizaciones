@@ -43,9 +43,9 @@ p{margin:0 0 1em}
 
 /* ---------- Nav ---------- */
 .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,228,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:center;gap:38px;height:62px}
-.nav img{height:24px;width:auto}
-.nav-links{display:flex;gap:22px;font-size:12.5px;font-weight:400;letter-spacing:.04em}
+.nav-in{display:flex;align-items:center;justify-content:center;gap:38px;height:78px}
+.nav img{height:38px;width:auto}
+.nav-links{display:flex;gap:26px;font-size:14px;font-weight:400;letter-spacing:.04em}
 .nav-links a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1.5px solid transparent;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--atardecer);border-bottom-color:var(--atardecer)}
 .nav-burger{display:none}
@@ -70,7 +70,7 @@ p{margin:0 0 1em}
 @media(prefers-reduced-motion:reduce){.nav-burger span{transition:none}}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero{position:relative;min-height:min(80vh,700px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero::after{content:"";position:absolute;inset:0;background:
   linear-gradient(90deg,rgba(45,24,18,.62) 0%,rgba(45,24,18,.28) 45%,rgba(45,24,18,0) 80%),
@@ -202,6 +202,7 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .q-total .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
 .q-total .big{font-family:var(--font-display);font-size:clamp(40px,5.6vw,58px);line-height:1;margin:8px 0 4px}
 .q-total .big.cop{font-size:clamp(28px,3.6vw,38px)}
+.q-total .half{font-family:var(--font-display);font-size:clamp(21px,2.8vw,29px);line-height:1;margin:8px 0 4px}
 .q-total .sm{font-size:13px;opacity:.9}
 .q-total hr{border:0;border-top:1px solid rgba(255,255,255,.24);margin:16px 0}
 .usd-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
@@ -509,6 +510,12 @@ footer p{margin:0 0 8px;line-height:1.7}
           <div class="lbl">Equivalente en pesos colombianos</div>
           <div class="big cop" id="t-cop">—</div>
           <div class="sm">COP · TRM del día $3.193,91</div>
+          <hr>
+          <div class="lbl">Valor total · 6 adultos</div>
+          <div class="half" id="t-all">—</div>
+          <div class="sm">USD</div>
+          <div class="half" id="t-all-cop">—</div>
+          <div class="sm">COP</div>
         </div>
         <p class="q-note">Incluye el tiquete aéreo ida y vuelta, el alojamiento todo incluido en el hotel elegido, y el traslado aeropuerto ⇄ hotel en bus turístico de lujo. Valores sujetos a disponibilidad al momento de confirmar.</p>
       </div>
@@ -552,35 +559,6 @@ footer p{margin:0 0 8px;line-height:1.7}
       </div>
     </div>
 
-    <div class="confirm">
-      <h3>Para confirmar tu reserva solicitamos</h3>
-      <ul class="req-list">
-        <li>📸 Foto del pasaporte de cada viajero (para viajes internacionales) o documento de identidad de cada viajero (viajes nacionales)</li>
-        <li>📧 Correo electrónico</li>
-        <li>💳 Comprobante del pago acordado con el asesor</li>
-      </ul>
-      <div class="minors-box">⚠️ <b>Importante:</b> si van menores de edad, deben tener permiso autorizado en notaría por el padre/madre que no viaja con él o ella; si van ambos padres, llevar registro civil.</div>
-
-      <h4>Datos para el pago</h4>
-      <p style="font-size:14px;color:var(--ink-soft);margin:0 0 4px">A nombre de: <b style="color:var(--tierra)">Lemont Group SAS</b></p>
-      <p style="font-size:14px;color:var(--ink-soft);margin:0">NIT: 901463296 (código de verificación si lo requiere: 8)</p>
-
-      <div class="pay-method">
-        <b>1. Transferencia bancaria</b>
-        <p>Cuenta de ahorros Bancolombia N.º 36200000706</p>
-        <p class="fine-note">🌍 Código SWIFT (solo para pagos de transferencias internacionales): COLOCOBM</p>
-      </div>
-      <div class="pay-method">
-        <b>2. Tarjeta de crédito, débito o PSE</b>
-        <p>💳 <a href="https://checkout.bold.co/payment/LNK_B8K4R6C3OF" target="_blank" rel="noopener">Link de pago Bold</a></p>
-        <p class="fine-note">Si eliges esta opción, añade un 5% por fee bancario. Si tu viaje es internacional, confírmanos antes de pagar para decirte cuánto es en pesos colombianos según la TRM del día.</p>
-      </div>
-
-      <p class="confirm-links">
-        📄 <a href="https://drive.google.com/file/d/1G6RyehQ1MniUHHXsMePjmLeFFi-sIu7c/view" target="_blank" rel="noopener">Términos y condiciones del contrato</a><br>
-        📄 <a href="https://drive.google.com/file/d/1d1lYQ50n5mn1hggO9pNwV3Bmk8Z2iDjL/view" target="_blank" rel="noopener">Políticas de tratamiento de datos (Habeas Data)</a>
-      </p>
-    </div>
   </div>
 </section>
 
@@ -879,6 +857,8 @@ function renderQuote(){
 
   document.getElementById("t-pax").textContent = money(total);
   document.getElementById("t-cop").textContent = money(total * TRM) + " COP";
+  document.getElementById("t-all").textContent = money(total * PAX);
+  document.getElementById("t-all-cop").textContent = money(total * PAX * TRM);
   document.getElementById("hotel-flag").textContent = h.adultos ? "★ Hotel solo para adultos" : "";
 
   const perkEl = document.getElementById("q-perk");
