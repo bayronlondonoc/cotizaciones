@@ -44,7 +44,7 @@ p{margin:0 0 1em}
 .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,228,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:center;gap:38px;height:78px}
 .nav img{height:38px;width:auto}
-.nav-links{display:flex;gap:26px;font-size:14px;font-weight:400;letter-spacing:.04em}
+.nav-links{display:flex;gap:26px;font-size:15px;font-weight:400;letter-spacing:.04em}
 .nav-links a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1.5px solid transparent;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--atardecer);border-bottom-color:var(--atardecer)}
 .nav-burger{display:none}
@@ -165,10 +165,13 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .hsel-list li:hover,.hsel-list li.active{background:rgba(104,54,44,.16)}
 .q-total{padding:28px 30px;border-radius:var(--radius);background:var(--atardecer);color:#fff}
 .q-total .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
-.q-total .big{font-family:var(--font-display);font-size:clamp(38px,5vw,52px);line-height:1;margin:8px 0 4px}
+.q-total .big{font-family:var(--font-display);font-size:clamp(26px,3.2vw,34px);line-height:1;margin:8px 0 4px}
 .q-total .half{font-family:var(--font-display);font-size:clamp(20px,2.5vw,27px);line-height:1;margin:8px 0 4px}
-.q-total .sm{font-size:13px;opacity:.9}
+.q-total .sm{font-size:12.5px;opacity:.9}
 .q-total hr{border:0;border-top:1px solid rgba(255,255,255,.24);margin:16px 0}
+.qt-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:600px){.qt-grid{grid-template-columns:1fr}}
+.usd-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .q-note{font-size:12px;color:rgba(230,202,178,.6);margin-top:18px;line-height:1.6}
 
 /* Reserva */
@@ -382,17 +385,21 @@ footer p{margin:0 0 8px;line-height:1.7}
 
       <div>
         <div class="q-total">
-          <div class="lbl">Valor total por adulto</div>
-          <div class="big" id="t-adulto">—</div>
-          <div class="sm">COP · vuelo + hotel + tours y traslados</div>
-          <hr>
-          <div class="lbl">Valor total por niño (8 años)</div>
-          <div class="big" id="t-nino">—</div>
-          <div class="sm">COP · el bebé de 1 año no paga</div>
+          <div class="qt-grid">
+            <div>
+              <div class="lbl">Valor total por adulto</div>
+              <div class="big" id="t-adulto">—</div>
+              <div class="sm">COP · vuelo + hotel + tours y traslados</div>
+            </div>
+            <div>
+              <div class="lbl">Valor total por niño (8 años)</div>
+              <div class="big" id="t-nino">—</div>
+              <div class="sm">COP · el bebé de 1 año no paga</div>
+            </div>
+          </div>
           <hr>
           <div class="lbl">Valor total · familia completa</div>
-          <div class="half" id="t-total">—</div>
-          <div class="sm">COP · 2 adultos + niño + bebé</div>
+          <div class="usd-row"><div class="half" id="t-total">—</div><span class="sm">COP · 2 adultos + niño + bebé</span></div>
         </div>
         <p class="q-note">Incluye los tiquetes aéreos ida y vuelta (2 adultos + niño; el bebé no paga), el alojamiento en el hotel elegido, y el combo de tours y traslados. Valores en pesos colombianos, sujetos a disponibilidad al momento de confirmar.</p>
       </div>
@@ -551,17 +558,17 @@ const VTA = { mediodia: { t:"Mediodía", s:"12:50 – 2:45 pm", p:538200 }, noch
 
 const HOTELES = [
   { id:"sunrise-estandar", nombre:"GHL Hotel Sunrise", room:"Habitación Estándar", cadena:"⭐ Nuestro recomendado", recomendado:true, adulto:1627000, nino:900000, video:"B3e5HZLHq-4",
-    resumen:"Piscina de agua dulce construida sobre el mar, discoteca, centro de convenciones y 3 restaurantes — el más completo de los cuatro." },
+    resumen:"Piscina de agua dulce construida sobre el mar con vistas al Caribe, rumba en Melon Kiss (viernes y sábado con DJ) y música en vivo en el lobby bar. Todo incluido: desayuno, almuerzo y cena tipo buffet en el Restaurante Paradise con vista al mar, Henriette a la carta con toques de la isla y El Muelle para cenas; snacks en la tarde y bebidas con y sin alcohol ilimitadas de 10:00 am a 2:00 am. Gimnasio y bar en la piscina." },
   { id:"sunrise-vista", nombre:"GHL Hotel Sunrise", room:"Habitación Vista al Mar", cadena:"⭐ Nuestro recomendado", recomendado:true, adulto:1826000, nino:900000, video:"B3e5HZLHq-4",
     resumen:"Misma propuesta del Sunrise, con vista directa al mar desde la habitación." },
   { id:"dorado-estandar", nombre:"Hotel Dorado", room:"Habitación Estándar", cadena:"", adulto:1320000, nino:1057000, video:"MF9DYeeJaHc",
-    resumen:"Todo incluido con shows nocturnos a diario, intercalados con el Hotel Arena Blanca." },
+    resumen:"Todo incluido: buffets de cocina isleña, nacional e internacional en salón principal o terraza, snacks tres veces al día (perros, hamburguesas, pizza, tacos), bebidas con y sin alcohol ilimitadas de 10:00 am a 2:00 am, y shows nocturnos todos los días de 8:30 a 10:00 pm intercalados con el Hotel Arena Blanca." },
   { id:"dorado-vista", nombre:"Hotel Dorado", room:"Habitación Vista al Mar", cadena:"", adulto:1432000, nino:1170000, video:"MF9DYeeJaHc",
     resumen:"Misma propuesta del Dorado, con vista al mar." },
   { id:"arena-blanca", nombre:"Hotel Arena Blanca (Oasis)", room:"Habitación Estándar", cadena:"", adulto:1545000, nino:1207000, fotos:12,
-    resumen:"Piscina Oasis con fondo de arena natural, parque infantil propio y shows nocturnos con el Hotel Dorado." },
+    resumen:"Piscina Oasis con fondo de arena natural para sentirse en medio del mar sin salir del hotel, más la piscina central con asoleadoras y sombrillas. Todo incluido: buffet isleño, nacional e internacional en el Restaurante Alcatraz, snacks en el Restaurante Terraza tres veces al día, bebidas ilimitadas de 10:00 am a 2:00 am, parque infantil seguro dentro del hotel y shows nocturnos diarios con el Hotel Dorado." },
   { id:"lord-pierre-estandar", nombre:"Hotel Lord Pierre", room:"Habitación Estándar", cadena:"", adulto:1132000, nino:832000, video:"3tYwaKse0YY",
-    resumen:"El más económico: muelle sobre el mar, piscina al aire libre y a pasos de Playa Spratt Bight." },
+    resumen:"El más económico de los cuatro, con un diferencial real: muelle privado sobre el mar para disfrutar el entorno sin salir del hotel, piscina al aire libre con bar en la piscina y ubicación a pasos de Playa Spratt Bight, en la zona más activa de la isla. 1 restaurante y 2 bares, terraza y servicio de habitación." },
   { id:"lord-pierre-vista", nombre:"Hotel Lord Pierre", room:"Habitación Vista al Mar", cadena:"", adulto:1245000, nino:945000, video:"3tYwaKse0YY",
     resumen:"Misma propuesta del Lord Pierre, con vista al mar." }
 ];
@@ -668,9 +675,9 @@ function renderQuote(){
   const totalNino = flightPP + h.nino + COMBO_PP;
   const total = totalAdulto * 2 + totalNino;
 
-  document.getElementById("t-adulto").textContent = money(totalAdulto) + " COP";
-  document.getElementById("t-nino").textContent = money(totalNino) + " COP";
-  document.getElementById("t-total").textContent = money(total) + " COP";
+  document.getElementById("t-adulto").textContent = money(totalAdulto);
+  document.getElementById("t-nino").textContent = money(totalNino);
+  document.getElementById("t-total").textContent = money(total);
 
   const flightTotal = flightPP * 3;
   const hotelTotal = h.adulto * 2 + h.nino * 1;
