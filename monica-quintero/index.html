@@ -85,7 +85,7 @@ p{margin:0 0 1em}
 
 /* ---------- Secciones ---------- */
 section{padding:clamp(56px,8vw,110px) 0;position:relative}
-.sec-head{max-width:70ch;margin-bottom:44px}
+.sec-head{margin-bottom:44px}
 .sec-head p{color:var(--ink-soft);font-size:17px;margin-top:16px}
 .rot{position:absolute;left:max(12px,calc((100vw - min(1180px,92vw))/2 - 46px));top:clamp(56px,8vw,110px);writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);font-weight:500;user-select:none}
 @media(max-width:1100px){.rot{display:none}}
@@ -417,7 +417,7 @@ footer p{margin:0 0 8px;line-height:1.7}
           </div>
           <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="flight-foot"><span><b>6 días</b></span><span>Valor convertido de pesos a la TRM del día</span></div>
+        <div class="flight-foot"><span><b>6 días</b></span></div>
       </div>
 
       <div class="flight">
@@ -442,7 +442,7 @@ footer p{margin:0 0 8px;line-height:1.7}
           </div>
           <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="flight-foot"><span><b>6 días</b></span><span>Valor convertido de pesos a la TRM del día</span></div>
+        <div class="flight-foot"><span><b>6 días</b></span></div>
       </div>
     </div>
 
@@ -508,12 +508,12 @@ footer p{margin:0 0 8px;line-height:1.7}
                 <div class="big" id="t-pax">—</div>
                 <s class="old-price" id="t-pax-old" style="display:none"></s>
               </div>
-              <div class="sm">USD · vuelo + hotel, todo incluido</div>
+              <div class="sm">USD · vuelo + hotel</div>
             </div>
             <div>
               <div class="lbl">Valor por persona en pesos colombianos</div>
               <div class="big cop" id="t-cop">—</div>
-              <div class="sm">COP · TRM del día $3.193,91</div>
+              <div class="sm">COP · TRM del día $3.233,91</div>
             </div>
           </div>
           <hr>
@@ -620,7 +620,7 @@ footer p{margin:0 0 8px;line-height:1.7}
         <summary><span class="ac-ic info">i</span>Vigencia, documentación y notas<span class="ac-ar" aria-hidden="true"></span></summary>
         <div class="ac-b">
           <div class="fine">
-            <p><strong>Vigencia:</strong> esta cotización se envía hoy, 16 de julio de 2026, y está sujeta a cambios y disponibilidad sin previo aviso por parte de la aerolínea y el hotel — tanto sus tarifas como su disponibilidad pueden cambiar en línea, porque son ventanas de inventario que se ven a nivel internacional. Los valores de los tiquetes en pesos colombianos se convirtieron a dólares con la TRM del día menos $40 ($3.193,91 COP/USD); una variación en la tasa de cambio puede modificar el valor final.</p>
+            <p><strong>Vigencia:</strong> esta cotización se envía hoy, 16 de julio de 2026, y está sujeta a cambios y disponibilidad sin previo aviso por parte de la aerolínea y el hotel — tanto sus tarifas como su disponibilidad pueden cambiar en línea, porque son ventanas de inventario que se ven a nivel internacional. Los valores se convirtieron con la TRM del día ($3.233,91 COP/USD); una variación en la tasa de cambio puede modificar el valor final.</p>
             <p><strong>Documentación:</strong> los ciudadanos colombianos requieren pasaporte con vigencia mínima de seis meses para ingresar a República Dominicana. Es responsabilidad de cada viajero verificar y cumplir los requisitos migratorios y sanitarios del destino.</p>
             <p><strong>Categorías hoteleras:</strong> corresponden a la clasificación local del destino. La asignación final de habitaciones depende de la disponibilidad del hotel al momento del check-in.</p>
           </div>
@@ -736,8 +736,8 @@ const HOTELES = [
 const VUELOS = {
   wingo:    { t:"Wingo",    s:"Jue 21 – Mar 26 ene", p:363, ida:"jueves 21 de enero de 2027", vta:"martes 26 de enero de 2027" },
   arajet:   { t:"Arajet",   s:"Mar 26 – Dom 31 ene", p:344, ida:"martes 26 de enero de 2027", vta:"domingo 31 de enero de 2027" },
-  jetsmart: { t:"JetSmart", s:"Lun 25 – Sáb 30 ene", p:386, ida:"lunes 25 de enero de 2027", vta:"sábado 30 de enero de 2027" },
-  avianca:  { t:"Avianca",  s:"Lun 25 – Sáb 30 ene", p:495, ida:"lunes 25 de enero de 2027", vta:"sábado 30 de enero de 2027" }
+  jetsmart: { t:"JetSmart", s:"Lun 25 – Sáb 30 ene", p:382, ida:"lunes 25 de enero de 2027", vta:"sábado 30 de enero de 2027" },
+  avianca:  { t:"Avianca",  s:"Lun 25 – Sáb 30 ene", p:489, ida:"lunes 25 de enero de 2027", vta:"sábado 30 de enero de 2027" }
 };
 
 const state = { vuelo:"wingo", hotel:"trs-turquesa", noches:5 };
@@ -872,7 +872,7 @@ function renderControls(){
 
 const RESERVA_PCT = 0.22; // solo para esta cotización — Bayron lo indica caso a caso
 
-const TRM = 3193.91;
+const TRM = 3233.91; // TRM del día exacta — para cotizaciones no se le restan los $40 (eso es solo para raices.travel)
 
 function renderQuote(){
   const v = VUELOS[state.vuelo];
