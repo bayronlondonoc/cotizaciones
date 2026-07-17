@@ -44,7 +44,7 @@ p{margin:0 0 1em}
 .nav{position:sticky;top:0;z-index:50;background:rgba(247,240,228,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:center;gap:38px;height:78px}
 .nav img{height:38px;width:auto}
-.nav-links{display:flex;gap:26px;font-size:14px;font-weight:400;letter-spacing:.04em}
+.nav-links{display:flex;gap:26px;font-size:15px;font-weight:400;letter-spacing:.04em}
 .nav-links a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1.5px solid transparent;transition:.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--atardecer);border-bottom-color:var(--atardecer)}
 .nav-burger{display:none}
@@ -83,7 +83,8 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 @media(max-width:1100px){.rot{display:none}}
 .alt{background:var(--paper)}
 
-.flight{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow-soft);max-width:640px}
+.flights{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.flight{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow-soft)}
 .flight-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:20px}
 .flight-top .route{font-family:var(--font-display);font-size:20px;color:var(--tierra);text-transform:uppercase}
 .flight-top .when{font-size:12px;color:var(--mute);letter-spacing:.03em}
@@ -167,9 +168,11 @@ section{padding:clamp(56px,8vw,110px) 0;position:relative}
 .hsel-list li:hover,.hsel-list li.active{background:rgba(104,54,44,.16)}
 .q-total{padding:28px 30px;border-radius:var(--radius);background:var(--atardecer);color:#fff}
 .q-total .lbl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
-.q-total .big{font-family:var(--font-display);font-size:clamp(34px,4.4vw,46px);line-height:1;margin:8px 0 4px}
-.q-total .sm{font-size:13px;opacity:.9}
+.q-total .big{font-family:var(--font-display);font-size:clamp(26px,3.2vw,34px);line-height:1;margin:8px 0 4px}
+.q-total .sm{font-size:12.5px;opacity:.9}
 .q-total hr{border:0;border-top:1px solid rgba(255,255,255,.24);margin:16px 0}
+.qt-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:600px){.qt-grid{grid-template-columns:1fr}}
 .q-note{font-size:12px;color:rgba(230,202,178,.6);margin-top:18px;line-height:1.6}
 
 .pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:20px}
@@ -278,30 +281,32 @@ footer p{margin:0 0 8px;line-height:1.7}
       <p>Elija la tarifa de ida y la de regreso más abajo, en «Tu inversión».</p>
     </div>
 
-    <div class="flight">
-      <div class="flight-top"><div class="route">Ida</div><div class="when">Lunes 7 de diciembre de 2026</div></div>
-      <div class="leg">
-        <div class="leg-row">
-          <div class="tm">3:35 pm<span>Medellín</span></div>
-          <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-          <div class="tm r">5:35 pm<span>San Andrés</span></div>
+    <div class="flights">
+      <div class="flight">
+        <div class="flight-top"><div class="route">Ida</div><div class="when">Lunes 7 de diciembre de 2026</div></div>
+        <div class="leg">
+          <div class="leg-row">
+            <div class="tm">3:35 pm<span>Medellín</span></div>
+            <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
+            <div class="tm r">5:35 pm<span>San Andrés</span></div>
+          </div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="leg-label big">Vuelo directo</div>
+        <div class="flight-foot"><span>2 h 0 m</span></div>
       </div>
-      <div class="flight-foot"><span>2 h 0 m</span></div>
-    </div>
 
-    <div class="flight" style="margin-top:18px">
-      <div class="flight-top"><div class="route">Regreso</div><div class="when">Jueves 10 de diciembre de 2026</div></div>
-      <div class="leg">
-        <div class="leg-row">
-          <div class="tm">6:20 pm<span>San Andrés</span></div>
-          <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
-          <div class="tm r">8:15 pm<span>Medellín</span></div>
+      <div class="flight">
+        <div class="flight-top"><div class="route">Regreso</div><div class="when">Jueves 10 de diciembre de 2026</div></div>
+        <div class="leg">
+          <div class="leg-row">
+            <div class="tm">6:20 pm<span>San Andrés</span></div>
+            <div class="line"><span class="dot a"></span><span class="dot b"></span></div>
+            <div class="tm r">8:15 pm<span>Medellín</span></div>
+          </div>
+          <div class="leg-label big">Vuelo directo</div>
         </div>
-        <div class="leg-label big">Vuelo directo</div>
+        <div class="flight-foot"><span>1 h 55 m</span></div>
       </div>
-      <div class="flight-foot"><span>1 h 55 m</span></div>
     </div>
 
     <div class="fares">
@@ -372,13 +377,18 @@ footer p{margin:0 0 8px;line-height:1.7}
 
       <div>
         <div class="q-total">
-          <div class="lbl">Valor total por adulto</div>
-          <div class="big" id="t-adulto">—</div>
-          <div class="sm">COP · vuelo + hotel, todo incluido</div>
-          <hr>
-          <div class="lbl">Valor total por niño</div>
-          <div class="big" id="t-nino">—</div>
-          <div class="sm">COP · vuelo + hotel, todo incluido</div>
+          <div class="qt-grid">
+            <div>
+              <div class="lbl">Valor total por adulto</div>
+              <div class="big" id="t-adulto">—</div>
+              <div class="sm">COP · vuelo + hotel, todo incluido</div>
+            </div>
+            <div>
+              <div class="lbl">Valor total por niño</div>
+              <div class="big" id="t-nino">—</div>
+              <div class="sm">COP · vuelo + hotel, todo incluido</div>
+            </div>
+          </div>
         </div>
         <p class="q-note">Tarifa de niño aplica de 2 a 12 años. Valores en pesos colombianos, sujetos a disponibilidad al momento de confirmar. Cuéntenos cuántos viajan y sus edades para armar el total exacto de su grupo.</p>
       </div>
@@ -539,15 +549,15 @@ const VTA = { basica: { t:"Basic", s:"$409.200", p:409200 }, classic: { t:"Class
 
 const HOTELES = [
   { id:"sunrise-estandar", nombre:"GHL Hotel Sunrise", room:"Habitación Estándar", cadena:"⭐ Nuestro recomendado", recomendado:true, adulto:2077000, nino:1650000, resAdulto:1060000, resNino:930000, video:"B3e5HZLHq-4",
-    resumen:"Piscina de agua dulce construida sobre el mar, discoteca y centro de convenciones — uno de los más completos de la isla." },
+    resumen:"Piscina de agua dulce construida sobre el mar con vistas al Caribe, rumba en Melon Kiss (viernes y sábado con DJ) y música en vivo en el lobby bar. Todo incluido: buffet en el Restaurante Paradise con vista al mar, Henriette a la carta y El Muelle para cenas; snacks en la tarde y bebidas de 10:00 am a 2:00 am. Gimnasio y bar en la piscina." },
   { id:"sunrise-vista", nombre:"GHL Hotel Sunrise", room:"Habitación Vista al Mar", cadena:"⭐ Nuestro recomendado", recomendado:true, adulto:2576000, nino:1650000, resAdulto:1210000, resNino:930000, video:"B3e5HZLHq-4",
     resumen:"Misma propuesta del Sunrise, con vista directa al mar." },
   { id:"arena-blanca", nombre:"Hotel Arena Blanca (Oasis)", room:"Habitación Estándar", cadena:"", adulto:2182000, nino:1901000, resAdulto:1090000, resNino:1010000, fotos:12,
-    resumen:"Piscina Oasis con fondo de arena natural, parque infantil propio y shows nocturnos con el Hotel Dorado." },
+    resumen:"Piscina Oasis con fondo de arena natural para sentirse en medio del mar sin salir del hotel, más la piscina central con asoleadoras. Todo incluido: buffet isleño, nacional e internacional en el Restaurante Alcatraz, snacks en la Terraza tres veces al día, bebidas ilimitadas de 10:00 am a 2:00 am, parque infantil y shows nocturnos diarios con el Hotel Dorado." },
   { id:"sol-caribe", nombre:"Hotel Sol Caribe Campo o Centro", room:"Habitación Estándar", cadena:"", adulto:2460000, nino:1608000, resAdulto:1170000, resNino:920000, video:"GLAQyLLVoP0",
-    resumen:"Club de playa privado con bar, snacks y deportes náuticos no motorizados, a 5 minutos en transporte incluido." },
+    resumen:"Club de playa privado en San Luis con bar, snacks y deportes náuticos no motorizados, a 5 minutos en el transporte incluido — y el todo incluido se mantiene en la playa con snacks, helados y bebidas ilimitadas. 'Dos hoteles en uno': acceso también al hotel hermano Sol Caribe durante el día. Restaurantes buffet y a la carta (italiano con reserva), 3 piscinas, zona de juegos y shows de baile en vivo." },
   { id:"dorado-estandar", nombre:"Hotel Dorado", room:"Habitación Estándar", cadena:"", adulto:2070000, nino:1807000, resAdulto:1060000, resNino:980000, video:"MF9DYeeJaHc",
-    resumen:"Todo incluido con shows nocturnos a diario, intercalados con el Hotel Arena Blanca." },
+    resumen:"Todo incluido: buffets de cocina isleña, nacional e internacional en salón principal o terraza, snacks tres veces al día, bebidas ilimitadas de 10:00 am a 2:00 am, y shows nocturnos todos los días de 8:30 a 10:00 pm intercalados con el Hotel Arena Blanca." },
   { id:"dorado-vista", nombre:"Hotel Dorado", room:"Habitación Vista al Mar", cadena:"", adulto:2182000, nino:1920000, resAdulto:1090000, resNino:1010000, video:"MF9DYeeJaHc",
     resumen:"Misma propuesta del Dorado, con vista al mar." },
   { id:"las-americas", nombre:"Hotel Las Américas", room:"Habitación Estándar", cadena:"", adulto:942000, nino:755000, resAdulto:470000, resNino:380000, fotos:12,
@@ -662,8 +672,8 @@ function renderQuote(){
   const totalAdulto = flightPP + h.adulto;
   const totalNino = flightPP + h.nino;
 
-  document.getElementById("t-adulto").textContent = money(totalAdulto) + " COP";
-  document.getElementById("t-nino").textContent = money(totalNino) + " COP";
+  document.getElementById("t-adulto").textContent = money(totalAdulto);
+  document.getElementById("t-nino").textContent = money(totalNino);
   document.getElementById("p-reserva-adulto").textContent = money(flightPP + h.resAdulto) + " COP";
   document.getElementById("p-reserva-nino").textContent = money(flightPP + h.resNino) + " COP";
 
