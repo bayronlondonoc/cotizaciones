@@ -406,17 +406,19 @@ footer p{margin:0 0 8px;line-height:1.7}
     <div class="sec-head">
       <div class="eyebrow">Cómo asegurar el plan</div>
       <h2>Para separar<br>tu viaje</h2>
-      <p>Reservas con el 100% del tiquete aéreo más el 22% del hotel, los tours y los traslados. El resto se paga después, antes de la fecha límite. El valor exacto aparece arriba, en Tu inversión, según lo que elijas.</p>
+      <p>Con la reserva dejas todo separado; el resto se paga después, antes de la fecha límite. Los valores son según la combinación, hoteles, aerolínea y tarifa que elegiste arriba, en Tu inversión.</p>
     </div>
     <div class="pay">
       <div class="pay-card">
         <div class="n">Reserva</div>
-        <div class="amt">100% vuelo<br>+ 22% servicios</div>
-        <p>El tiquete aéreo completo más el 22% del hotel, los tours y los traslados. Con eso queda todo separado.</p>
+        <div class="amt" id="r-res-usd">—</div>
+        <div id="r-res-cop" style="font-size:14px;color:var(--mute);margin-bottom:10px"></div>
+        <p>Para dejar todo separado hoy.</p>
       </div>
       <div class="pay-card">
         <div class="n">Saldo</div>
-        <div class="amt">El 78% restante<br>de los servicios</div>
+        <div class="amt" id="r-sal-usd">—</div>
+        <div id="r-sal-cop" style="font-size:14px;color:var(--mute);margin-bottom:10px"></div>
         <p>Se paga antes de la fecha límite de cada hotel, sin intereses ni recargos.</p>
       </div>
     </div>
@@ -819,6 +821,10 @@ function renderQuote(){
     document.getElementById("t-cop").textContent = "Elige otra opción";
     document.getElementById("p-res").innerHTML = "—";
     document.getElementById("p-sal").innerHTML = "—";
+    document.getElementById("r-res-usd").innerHTML = "—";
+    document.getElementById("r-sal-usd").innerHTML = "—";
+    document.getElementById("r-res-cop").textContent = "";
+    document.getElementById("r-sal-cop").textContent = "";
     warn.style.display = "block";
     warn.textContent = `El ${hc.nombre} no tiene tarifa para 2 noches en Cancún. Elige 3 noches en Cancún u otro hotel.`;
   } else {
@@ -826,6 +832,10 @@ function renderQuote(){
     document.getElementById("t-cop").textContent = money(c.totalCOP) + " COP";
     document.getElementById("p-res").innerHTML = usd(c.reservaUSD) + `<small>${money(c.reservaCOP)} COP</small>`;
     document.getElementById("p-sal").innerHTML = usd(c.saldoUSD) + `<small>${money(c.saldoCOP)} COP</small>`;
+    document.getElementById("r-res-usd").innerHTML = usd(c.reservaUSD);
+    document.getElementById("r-sal-usd").innerHTML = usd(c.saldoUSD);
+    document.getElementById("r-res-cop").textContent = money(c.reservaCOP) + " COP";
+    document.getElementById("r-sal-cop").textContent = money(c.saldoCOP) + " COP";
     warn.style.display = "none";
   }
 
