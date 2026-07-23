@@ -298,8 +298,9 @@ footer p{margin:0 0 8px;line-height:1.7}
           <div class="q-opts" id="sel-hotel"></div>
         </div>
         <div class="q-selgroup" style="grid-column:1/-1">
-          <label>Tipo de habitación</label>
+          <label>Habitación de quien viaja individual</label>
           <div class="q-opts" id="sel-room"></div>
+          <p class="q-note" style="margin-top:10px">Las 3 parejas del grupo siempre van en la habitación estándar del hotel (3 habitaciones dobles). Esta elección es solo para la 7ª persona, que viaja sola: puede quedarse en esa misma categoría o tomar una habitación superior con costo adicional.</p>
         </div>
         <div class="q-selgroup">
           <label>Aerolínea</label>
@@ -510,23 +511,23 @@ const PLANES = [ {k:"4", noches:4, label:"4 noches", factor:1}, {k:"7", noches:7
 const HOTELES = [
   { slug:"grand-sirenis", nombre:"Grand Sirenis Punta Cana Resort", cadena:"Sirenis Hotels · Uvero Alto", est:5, opiniones:"15.922", ao:false, fotos:12, video:"lupJTsKjDrU",
     pax6:2448.77,
-    rooms:[ {k:"a", label:"Habitación Estándar (doble)", usd:571.34}, {k:"b", label:"Suite Romance", usd:851.06} ],
+    rooms:[ {k:"a", label:"Habitación Estándar (doble)", usd:571.34, same:true}, {k:"b", label:"Suite Romance", usd:851.06, same:false} ],
     desc:"Resort todo incluido frente al mar en Uvero Alto, ideal para familias, parejas y amigos. Cuenta con un parque acuático de 12.000 m² con toboganes y zona infantil, además de 2 piscinas grandes y 2 para niños. Ofrece 8 restaurantes temáticos (italiano, japonés, tex-mex, brasileño) y 13 bares, incluyendo discoteca y casino. Actividades diurnas como kayak, snorkel, mini-golf y club infantil (4 a 12 años), además de shows nocturnos. Las habitaciones incluyen aire acondicionado, minibar, TV satelital y balcón." },
   { slug:"punta-cana-princess", nombre:"Punta Cana Princess", cadena:"Princess Hotels · Bávaro · Solo adultos", est:5, opiniones:"23.976", ao:true, fotos:12,
     pax6:2572.93,
-    rooms:[ {k:"a", label:"Deluxe Suite", usd:529.08}, {k:"b", label:"Suite Luna de Miel", usd:829.89} ],
+    rooms:[ {k:"a", label:"Deluxe Suite", usd:529.08, same:true}, {k:"b", label:"Suite Luna de Miel", usd:829.89, same:false} ],
     desc:"Resort todo incluido solo para adultos (18+), en primera línea de Playa Bávaro, a unos 25 minutos del aeropuerto de Punta Cana. Sus suites (Deluxe y Luna de Miel) tienen bañera de hidromasaje, balcón y minibar; el todo incluido 24 horas suma 5 restaurantes (buffet principal, trattoria italiana, mediterráneo, steakhouse y suizo) más bares y entretenimiento diario y nocturno, incluida una Movie Disco en el casino. Los huéspedes también acceden a las instalaciones de los hoteles hermanos del mismo complejo." },
   { slug:"grand-bavaro-princess", nombre:"Grand Bávaro Princess", cadena:"Princess Hotels · Bávaro", est:5, opiniones:"17.690", ao:false, fotos:12,
     pax6:2781.08,
-    rooms:[ {k:"a", label:"Bungalow Suite", usd:552.57}, {k:"b", label:"Bungalow de una cama", usd:701.72} ],
+    rooms:[ {k:"a", label:"Bungalow Suite", usd:552.57, same:true}, {k:"b", label:"Bungalow de una cama", usd:701.72, same:false} ],
     desc:"Resort todo incluido familiar, directamente sobre Playa Bávaro, a unos 35 minutos del aeropuerto de Punta Cana. Con habitaciones tipo bungalow rodeadas de zonas verdes, cuenta con 11 restaurantes temáticos —entre ellos La Hispaniola, Focaccia, Tanuki, Wasabi, El Gaucho y El Pescador—, 3 buffets, zona de food trucks y 15 bares. Tiene 3 piscinas, miniclub infantil (4-12 años) y deportes acuáticos no motorizados." },
   { slug:"vista-sol", nombre:"Vista Sol Punta Cana Beach Resort & Spa", cadena:"Vista Sol · Bávaro", est:4, opiniones:"8.897", ao:false, fotos:12, video:"LRXGQcrqMtE",
     pax6:2450.93,
-    rooms:[ {k:"a", label:"Comfort con balcón y vista al jardín", usd:735.29}, {k:"b", label:"Habitación vista al mar con balcón", usd:828.26} ],
+    rooms:[ {k:"a", label:"Comfort con balcón y vista al jardín", usd:735.29, same:true}, {k:"b", label:"Habitación vista al mar con balcón", usd:828.26, same:false} ],
     desc:"Resort todo incluido con acceso directo a la playa en Bávaro. Cuenta con 6 restaurantes de cocina internacional y gourmet, un food truck frente al mar y una pizzería/crepería — Mamma Mia, El Mariachi y Teppanyaki & Sushi Bar son los más destacados. Tiene además 3 piscinas, 7 bares, entretenimiento diario y espectáculos nocturnos en la playa; las habitaciones estándar cuentan con balcón privado. Cancelación gratuita solo hasta el 12 de agosto de 2026 — la más próxima de las cinco opciones." },
   { slug:"ocean-el-faro", nombre:"Ocean El Faro", cadena:"H10 Hotels · Punta Cana", est:5, opiniones:"9.926", ao:false, fotos:12, video:"EBc8OvwZDvw",
     pax6:2705.74,
-    rooms:[ {k:"a", label:"Junior Suite con vistas", usd:789.18}, {k:"b", label:"Junior Suite vistas al mar", usd:1097.20} ],
+    rooms:[ {k:"a", label:"Junior Suite con vistas", usd:789.18, same:true}, {k:"b", label:"Junior Suite vistas al mar", usd:1097.20, same:false} ],
     desc:"Resort de arquitectura estilo colonial, con el icónico faro con mirador panorámico y una propuesta de entretenimiento muy completa: río lento, parque acuático y bowling dentro del complejo. En gastronomía ofrece 10 restaurantes y 13 bares — Sakura (teppanyaki y sushi), Blue Moon (cocina de autor) y Route 66 (BBQ estilo americano) son los más destacados. La habitación estándar es la Junior Suite, con balcón o terraza, sala de estar y minibar incluido. También cuenta con spa, sports bar y teatro." }
 ];
 const AMEN_LABEL = {parking:"parqueadero","aire acondicionado":"aire acondicionado",piscina:"piscina",spa:"spa",restaurante:"restaurante",gimnasio:"gimnasio"};
@@ -636,7 +637,7 @@ function renderHotelSel(){
 function renderRoomSel(){
   const h = HOTELES.find(x=>x.slug===state.hotel);
   if(!h.rooms.some(r=>r.k===state.room)) state.room = h.rooms[0].k;
-  document.getElementById("sel-room").innerHTML = h.rooms.map(r=>pill("room",r.k,r.label,state.room===r.k)).join("");
+  document.getElementById("sel-room").innerHTML = h.rooms.map(r=>pill("room",r.k,`${r.label} <small style="opacity:.75">· ${r.same?'igual al grupo':'mejora individual'}</small>`,state.room===r.k)).join("");
   document.querySelectorAll('input[name="room"]').forEach(r=>r.addEventListener("change",()=>{ state.room=r.value; renderQuote(); }));
 }
 function renderAir(){
@@ -669,8 +670,8 @@ function renderQuote(){
   const c = calc();
 
   document.getElementById("q-resumen").innerHTML =
-    `Plan de <b>${plan.label}</b> en <b>${h.nombre}</b>, habitación <b>${room.label}</b> · vuelo <b>${a.nombre}</b> tarifa ${fare.label}: ` +
-    `ida <b>${labelDay(state.idaDay)}</b>, regreso <b>${labelDay(regDay)}</b> de 2026.`;
+    `Plan de <b>${plan.label}</b> en <b>${h.nombre}</b>: 6 personas en habitación estándar (3 parejas) + 1 persona sola en <b>${room.label}</b>${room.same?'':' (mejora individual)'} · ` +
+    `vuelo <b>${a.nombre}</b> tarifa ${fare.label}: ida <b>${labelDay(state.idaDay)}</b>, regreso <b>${labelDay(regDay)}</b> de 2026.`;
 
   document.getElementById("t-usd").textContent = usd(c.totalPP);
   document.getElementById("t-cop").textContent = money(c.totalCOP) + " COP";
@@ -682,7 +683,7 @@ function renderQuote(){
   const msg =
     `Hola Raíces, soy Alejandro. Quiero reservar el plan a Punta Cana para 7 personas:\n\n` +
     `• Plan: ${plan.label}\n` +
-    `• Hotel: ${h.nombre}, habitación ${room.label}\n` +
+    `• Hotel: ${h.nombre} — 6 en habitación estándar (3 parejas) + 1 persona sola en ${room.label}${room.same?'':' (mejora individual)'}\n` +
     `• Vuelo ${a.nombre}, tarifa ${fare.label}: ida ${labelDay(state.idaDay)}, regreso ${labelDay(regDay)} de 2026\n` +
     `• Incluye transporte aeropuerto-hotel-aeropuerto\n\n` +
     `Valor por persona: ${usd(c.totalPP)} (${money(c.totalCOP)} COP)\n` +
