@@ -156,6 +156,23 @@ section{padding:clamp(54px,7.5vw,104px) 0;position:relative}
 .lightbox img{max-width:100%;max-height:100%;border-radius:10px}
 .lb-close{position:fixed;top:14px;right:22px;background:none;border:0;font-size:38px;color:rgba(255,255,255,.85);cursor:pointer;line-height:1}
 
+.tours{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.tours{grid-template-columns:1fr}}
+.tour{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);display:flex;flex-direction:column}
+.tour .cover{position:relative;aspect-ratio:4/3;overflow:hidden;border:0;padding:0;width:100%;display:block;cursor:zoom-in;background:var(--arena-soft)}
+.tour .cover img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.tour .cover:hover img{transform:scale(1.04)}
+.tour .num{position:absolute;top:12px;left:12px;background:var(--atardecer);color:#fff;font-family:var(--font-display);font-size:16px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+.tour-b{padding:18px 20px 20px}
+.tour-b h3{font-size:21px;margin-bottom:8px}
+.tour-b p{font-size:13px;color:var(--ink-soft);line-height:1.65;margin:0}
+.tour .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.tour .thumbs button{padding:0;border:0;background:none;cursor:zoom-in;border-radius:8px;overflow:hidden;line-height:0}
+.tour .thumbs img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.tr-note{max-width:760px;margin:30px auto 0;background:var(--paper);border:1.5px dashed rgba(104,54,44,.3);border-radius:var(--radius);padding:20px 24px;text-align:center}
+.tr-note .tr-tag{display:inline-block;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#fff;background:var(--oliva);padding:4px 12px;border-radius:999px;font-weight:500;margin-bottom:10px}
+.tr-note p{font-size:13.5px;color:var(--ink-soft);line-height:1.7;margin:0}
+
 /* Tu inversión */
 .quote{background:var(--tierra);color:var(--arena)}
 .quote h2,.quote h3{color:var(--arena)} .quote .eyebrow{color:var(--arena)}
@@ -249,6 +266,7 @@ footer p{margin:0 0 8px;line-height:1.7}
     <div class="nav-links" id="navlinks">
       <a href="#vuelos">Vuelos</a>
       <a href="#hoteles">Hoteles</a>
+      <a href="#tours">Tours</a>
       <a href="#inversion">Tu inversión</a>
       <a href="#reserva">Reserva</a>
     </div>
@@ -260,11 +278,12 @@ footer p{margin:0 0 8px;line-height:1.7}
   <div class="hero-in">
     <div class="kicker">Cotización preparada para Yuraniis</div>
     <h1>San Andrés,<br><em>mar de siete colores</em></h1>
-    <p class="sub">Tres noches todo incluido en la isla, con vuelo directo desde Bogotá y cuatro hoteles para elegir, desde los más prácticos hasta un cinco estrellas con piscina infinita. Elige el hotel y la tarifa del vuelo, y el valor se ajusta solo.</p>
+    <p class="sub">Tres noches todo incluido en la isla, con vuelo directo desde Bogotá, traslados y los tours clásicos de San Andrés: vuelta a la isla, catamarán y Acuario. Cuatro hoteles para elegir; el valor se ajusta solo.</p>
     <div class="hero-meta">
       <span class="pill">15 – 18 de enero de 2027</span>
       <span class="pill">3 noches</span>
       <span class="pill">2 adultos · 1 habitación</span>
+      <span class="pill">Tours y traslados</span>
       <span class="pill">Vuelo directo</span>
       <span class="pill">Todo incluido</span>
     </div>
@@ -332,6 +351,47 @@ footer p{margin:0 0 8px;line-height:1.7}
   </div>
 </section>
 
+<!-- TOURS -->
+<section id="tours">
+  <span class="rot">Tours</span>
+  <div class="wrap">
+    <div class="sec-head mid">
+      <div class="eyebrow">Incluidos en el plan</div>
+      <h2>Tres tours <em>por la isla</em></h2>
+      <p>Los tres recorridos clásicos de San Andrés van incluidos para los dos viajeros. La programación de cada tour se coordina en la isla según la disponibilidad de cupos del día.</p>
+    </div>
+    <div class="tours">
+      <article class="tour">
+        <button type="button" class="cover" data-lb="assets/tours/vuelta/1.jpg" aria-label="Ampliar foto"><img src="assets/tours/vuelta/1.jpg" alt="Hoyo Soplador en San Andrés" loading="lazy"><span class="num">1</span></button>
+        <div class="tour-b">
+          <h3>Vuelta a la isla</h3>
+          <p>Recorrido alrededor de San Andrés con paradas en sus sitios más conocidos, como el Hoyo Soplador y la zona de West View, para conocer la isla de punta a punta.</p>
+          <div class="thumbs"><button type="button" data-lb="assets/tours/vuelta/2.jpg" aria-label="Ampliar foto"><img src="assets/tours/vuelta/2.jpg" alt="West View" loading="lazy"></button><button type="button" data-lb="assets/tours/vuelta/3.jpg" aria-label="Ampliar foto"><img src="assets/tours/vuelta/3.jpg" alt="La Piscinita" loading="lazy"></button></div>
+        </div>
+      </article>
+      <article class="tour">
+        <button type="button" class="cover" data-lb="assets/tours/catamaran/1.jpg" aria-label="Ampliar foto"><img src="assets/tours/catamaran/1.jpg" alt="Mar de siete colores frente a Johnny Cay" loading="lazy"><span class="num">2</span></button>
+        <div class="tour-b">
+          <h3>Tour en catamarán</h3>
+          <p>Paseo en catamarán por el mar de los siete colores, para ver la isla desde el agua y disfrutar el azul turquesa del Caribe.</p>
+        </div>
+      </article>
+      <article class="tour">
+        <button type="button" class="cover" data-lb="assets/tours/acuario/1.jpg" aria-label="Ampliar foto"><img src="assets/tours/acuario/1.jpg" alt="Cayo Acuario en San Andrés" loading="lazy"><span class="num">3</span></button>
+        <div class="tour-b">
+          <h3>Tour al Acuario</h3>
+          <p>Excursión en lancha al cayo Acuario, de aguas cristalinas y poco profundas, ideal para nadar y ver peces de colores muy cerca de la orilla.</p>
+          <div class="thumbs"><button type="button" data-lb="assets/tours/acuario/2.jpg" aria-label="Ampliar foto"><img src="assets/tours/acuario/2.jpg" alt="Playa del Acuario" loading="lazy"></button></div>
+        </div>
+      </article>
+    </div>
+    <div class="tr-note">
+      <span class="tr-tag">Incluido en el plan</span>
+      <p>Traslados aeropuerto &harr; hotel, de llegada y de salida. Los tours no incluyen alimentación, bebidas ni el valor de ingreso a los sitios de interés; lleven ropa de playa cómoda y protector solar.</p>
+    </div>
+  </div>
+</section>
+
 <!-- TU INVERSIÓN -->
 <section id="inversion" class="quote">
   <span class="rot" style="color:rgba(230,202,178,.45)">Inversión</span>
@@ -360,7 +420,7 @@ footer p{margin:0 0 8px;line-height:1.7}
     </div>
     <div id="precio"></div>
     <div id="pay-zone"></div>
-    <p class="q-note">Valor por persona en pesos colombianos, igual para los 2 viajeros. Incluye tiquetes ida y regreso con la tarifa elegida, 3 noches todo incluido en el hotel elegido y el IVA del hotel. Sujeto a disponibilidad al momento de confirmar.</p>
+    <p class="q-note">Valor por persona en pesos colombianos, igual para los 2 viajeros. Incluye tiquetes ida y regreso con la tarifa elegida, 3 noches todo incluido en el hotel elegido con su IVA, los tours de vuelta a la isla, catamarán y Acuario, y los traslados aeropuerto &harr; hotel. Sujeto a disponibilidad al momento de confirmar.</p>
   </div>
 </section>
 
@@ -371,7 +431,7 @@ footer p{margin:0 0 8px;line-height:1.7}
     <div class="sec-head mid">
       <div class="eyebrow">Cómo asegurar el plan</div>
       <h2>Para separar <em>el viaje</em></h2>
-      <p>Los tiquetes se pagan completos desde el primer día. Del hotel, basta un anticipo para dejar todo separado.</p>
+      <p>Los tiquetes se pagan completos desde el primer día. Del hotel, los tours y los traslados, basta un anticipo para dejar todo separado.</p>
     </div>
     <div class="pay" id="pay-cards"></div>
     <div class="alert" id="pay-alert"></div>
@@ -395,6 +455,8 @@ footer p{margin:0 0 8px;line-height:1.7}
             <li>Equipaje según la tarifa elegida (Basic o Classic)</li>
             <li>3 noches de alojamiento en el hotel elegido, del 15 al 18 de enero de 2027, en una habitación doble con régimen todo incluido</li>
             <li>El IVA del hotel</li>
+            <li>Tours: vuelta a la isla, tour en catamarán y tour al Acuario</li>
+            <li>Traslados aeropuerto &harr; hotel, de llegada y de salida</li>
             <li>Acompañamiento de Raíces por WhatsApp, antes y durante el viaje</li>
           </ul>
         </div>
@@ -405,8 +467,7 @@ footer p{margin:0 0 8px;line-height:1.7}
         <div class="ac-b">
           <ul class="lst no">
             <li>Tarjeta de turismo de San Andrés, obligatoria para cada viajero (se paga antes de abordar en Bogotá)</li>
-            <li>Traslados aeropuerto &harr; hotel (podemos sumarlos)</li>
-            <li>Tours por la isla (podemos cotizarlos aparte)</li>
+                        <li>Alimentación, bebidas y entradas a los sitios de interés durante los tours</li>
             <li>Asistencia médica en viaje</li>
             <li>Equipaje adicional al de la tarifa elegida y selección de silla</li>
             <li>Propinas y consumos no incluidos en el todo incluido del hotel</li>
@@ -419,7 +480,7 @@ footer p{margin:0 0 8px;line-height:1.7}
         <div class="ac-b">
           <ul class="lst no">
             <li><b>Tiquetes aéreos:</b> una vez emitidos no admiten devolución; los cambios antes del vuelo están sujetos a la política y los cargos de Avianca</li>
-            <li><b>Hotel:</b> las condiciones de pago del plan elegido se indican en «Tu inversión» y en «Para separar el viaje»</li>
+            <li><b>Hotel, tours y traslados:</b> las condiciones de pago del plan elegido se indican en «Tu inversión» y en «Para separar el viaje»</li>
           </ul>
         </div>
       </details>
@@ -471,7 +532,7 @@ footer p{margin:0 0 8px;line-height:1.7}
       <span>Cotización preparada para Yuraniis · 6 de noviembre de 2026</span>
       <span>Documento privado. No constituye reserva confirmada.</span>
     </div>
-    <p class="credits"><b style="color:rgba(230,202,178,.55);font-weight:500">Créditos.</b> Fotos y videos de los hoteles: cortesía de Sirenis Hotels, Solar Hoteles, Hotel Arena Blanca by Dorado y Hotel Verde Mar, de sus sitios y canales oficiales. Imagen de portada: cortesía de Sirenis Hotels. Las marcas y logotipos citados pertenecen a sus respectivos titulares.</p>
+    <p class="credits"><b style="color:rgba(230,202,178,.55);font-weight:500">Créditos.</b> Fotos y videos de los hoteles: cortesía de Sirenis Hotels, Solar Hoteles, Hotel Arena Blanca by Dorado y Hotel Verde Mar, de sus sitios y canales oficiales. Imagen de portada: cortesía de Sirenis Hotels. Fotos de los tours vía Wikimedia Commons: Hoyo Soplador © Denys (CC BY-SA 4.0); West View y Acuario © Joao Carlos Medau (CC BY 2.0); La Piscinita © adelmotrujillo (CC BY-SA 3.0); Johnny Cay © Mario Carvajal (CC BY 3.0); El Acuario © Xemenendura (CC BY-SA 4.0). Las marcas y logotipos citados pertenecen a sus respectivos titulares.</p>
   </div>
 </footer>
 
@@ -504,16 +565,16 @@ const TARIFAS = [
 ];
 const IDAS = [{ id:"0650", pill:"06:50 → 09:00", hora:"6:50 am" }];
 const REGS = [{ id:"1005", pill:"10:05 → 12:10", hora:"10:05 am" }];
-// [valor, reserva, saldo] por persona, en COP (IVA del hotel incluido)
+// [valor, reserva, saldo] por persona, en COP (IVA del hotel, tours y traslados incluidos)
 const PRECIOS = {
-  "basic|solcaribe": [2083305.20, 905209.06, 1178096.14],
-  "basic|verdemar": [2226282.83, 936664.14, 1289618.69],
-  "basic|arenablanca": [2509767.27, 999030.71, 1510736.56],
-  "basic|sirenis": [3346365.77, 1183082.38, 2163283.39],
-  "classic|solcaribe": [2196071.16, 1017975.02, 1178096.14],
-  "classic|verdemar": [2339048.79, 1049430.10, 1289618.69],
-  "classic|arenablanca": [2622533.23, 1111796.67, 1510736.56],
-  "classic|sirenis": [3459131.73, 1295848.34, 2163283.39]
+  "basic|solcaribe": [2223305.20, 936009.06, 1287296.14],
+  "basic|verdemar": [2366282.83, 967464.14, 1398818.69],
+  "basic|arenablanca": [2649767.27, 1029830.71, 1619936.56],
+  "basic|sirenis": [3486365.77, 1213882.38, 2272483.39],
+  "classic|solcaribe": [2336071.16, 1048775.02, 1287296.14],
+  "classic|verdemar": [2479048.79, 1080230.10, 1398818.69],
+  "classic|arenablanca": [2762533.23, 1142596.67, 1619936.56],
+  "classic|sirenis": [3599131.73, 1326648.34, 2272483.39]
 };
 const state = { hotel:"sirenis", tarifa:"basic", ida:"0650", reg:"1005" };
 
@@ -605,13 +666,13 @@ function render(){
   document.getElementById("q-resumen").innerHTML =
     '<b>' + h.nombre + '</b> &middot; ' + h.hab + ' &middot; todo incluido &middot; 3 noches<br>'
     + '<b>' + t.nombre + '</b> &middot; ida viernes 15 de enero a las ' + ida.hora + ' &middot; regreso lunes 18 de enero a las ' + reg.hora + ' &middot; vuelos directos<br>'
-    + 'IVA del hotel incluido en el valor.';
+    + 'Vuelta a la isla, catamarán, Acuario y traslados incluidos &middot; IVA del hotel incluido.';
 
   document.getElementById("precio").innerHTML = '<div class="rp">'
     + '<div class="rp-who">Por persona · igual para los 2 viajeros</div>'
     + '<div class="rp-l">Valor por persona</div>'
     + '<div class="rp-big">' + money(c.total) + '</div>'
-    + '<div class="rp-sm">COP · vuelo + hotel todo incluido + IVA del hotel</div>'
+    + '<div class="rp-sm">COP · vuelo + hotel todo incluido + IVA + tours y traslados</div>'
     + '<div class="rp-split">'
     + '<div><div class="rp-l">Reserva</div><div class="rp-amt">' + money(c.reserva) + '</div></div>'
     + '<div><div class="rp-l">Saldo</div><div class="rp-amt">' + money(c.saldo) + '</div></div>'
@@ -620,7 +681,7 @@ function render(){
   document.getElementById("pay-zone").innerHTML = '<div class="pay-note">Reservas con <b>' + money(c.reserva) + ' por persona</b> · pagas el saldo a más tardar el <b>' + LIMITE + '</b>.</div>';
 
   document.getElementById("pay-cards").innerHTML =
-    '<div class="pay-card"><div class="n">Paso 1 · Hoy</div><div class="amt">' + money(c.reserva) + '</div><div class="cop">por persona</div><p>Con esto se emiten los tiquetes y queda separado el hotel.</p></div>'
+    '<div class="pay-card"><div class="n">Paso 1 · Hoy</div><div class="amt">' + money(c.reserva) + '</div><div class="cop">por persona</div><p>Con esto se emiten los tiquetes y quedan separados el hotel, los tours y los traslados.</p></div>'
     + '<div class="pay-card"><div class="n">Paso 2 · Saldo</div><div class="amt">' + money(c.saldo) + '</div><div class="cop">por persona</div><p>Se paga antes de la fecha límite.</p></div>';
   document.getElementById("pay-alert").innerHTML = '<div class="ic">!</div><div><h3>Fecha límite de pago</h3>'
     + '<p>El 100% del plan debe estar pagado <b>a más tardar el ' + LIMITE + '</b>. Si el pago no se recibe a tiempo, la reserva se cancela automáticamente.</p></div>';
@@ -630,6 +691,7 @@ function render(){
     "",
     "Hotel: " + h.nombre + " (" + h.hab + ", todo incluido, 3 noches)",
     "Vuelo: " + t.nombre,
+    "Tours: vuelta a la isla, catamarán y Acuario, con traslados aeropuerto ↔ hotel",
     "Ida: viernes 15 de enero, " + ida.hora + " · Regreso: lunes 18 de enero, " + reg.hora,
     "Valor por persona: " + money(c.total) + " COP (IVA del hotel incluido)",
     "Reserva: " + money(c.reserva) + " por persona · saldo antes del " + LIMITE + ".",
